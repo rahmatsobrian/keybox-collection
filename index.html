@@ -6,9 +6,10 @@
     
     <title>Siroha Keybox Collection</title>
     <meta name="title" content="Siroha Keybox Collection">
-    <meta name="description" content="Gudang penyimpanan XML & ZIP Keybox terverifikasi. Selalu update dan siap digunakan untuk kebutuhan Android Modding Anda oleh Komunitas Siroha.">
-    <meta name="keywords" content="Siroha, Keybox, XML Keybox, Play Integrity Fix, PIF, Android Modding, Root, Magisk, KernelSU, Android 15">
-    <meta name="author" content="Rahmat Sobrian (Siroha Community)">
+    <meta name="description" content="Gudang penyimpanan Keybox XML & ZIP. Selalu update dan siap digunakan untuk kebutuhan anda yang telah disediakan oleh Siroha.">
+    <meta name="keywords" content="Siroha, Keybox, XML Keybox, Play Integrity Fix, PIF, Android Modding, Root, Magisk, KernelSU">
+    <meta name="author" content="Rahmat Sobrian (Siroha)">
+	<meta name="image" content="https://raw.githubusercontent.com/rahmatsobrian/keybox-collection/main/banner.png">
     <meta name="theme-color" content="#2ecc71">
 
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
@@ -38,9 +39,14 @@
                 radial-gradient(circle at 90% 80%, rgba(46, 204, 113, 0.08) 0%, transparent 40%);
         }
 
+        /* Class untuk mengunci scroll background saat modal terbuka */
+        body.modal-open {
+            overflow: hidden;
+        }
+
         nav {
-            position: sticky; top: 0; z-index: 100; padding: 1rem 5%; background: rgba(10, 15, 11, 0.7);
-            backdrop-filter: blur(15px); border-bottom: 1px solid var(--glass-border);
+            position: sticky; top: 0; z-index: 100; padding: 1.2rem 5%; background: rgba(10, 15, 11, 0.85);
+            backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); border-bottom: 1px solid var(--glass-border);
             display: flex; justify-content: space-between; align-items: center;
         }
 
@@ -49,12 +55,13 @@
             letter-spacing: 2px; display: flex; align-items: center; gap: 8px;
         }
 
-        .nav-actions { display: flex; gap: 12px; align-items: center; }
+        .nav-actions { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
 
         .nav-btn {
             background: transparent; border: 1px solid var(--glass-border); color: var(--primary);
-            padding: 6px 10px; border-radius: 8px; cursor: pointer; display: flex;
+            padding: 8px 12px; border-radius: 8px; cursor: pointer; display: flex;
             align-items: center; gap: 6px; font-weight: 600; font-size: 0.85rem; transition: 0.3s;
+            min-height: 38px;
         }
 
         .nav-btn:hover { background: var(--glass); border-color: var(--primary); }
@@ -83,8 +90,6 @@
             display: flex; 
             flex-direction: column; 
             position: relative; 
-            
-            /* Hardware Acceleration */
             will-change: transform, opacity;
             transform: translateZ(0);
             -webkit-transform: translateZ(0);
@@ -101,7 +106,7 @@
         }
         .icon-box.zip-type { background: rgba(255, 177, 66, 0.15); color: var(--warning); }
 
-        .card-info { width: 100%; }
+        .card-info { width: 100%; display: flex; flex-direction: column; }
         .card-info h3 { font-size: 1rem; color: #fff; margin-bottom: 6px; white-space: normal; word-break: break-word; line-height: 1.3; }
         .card-meta { display: flex; flex-direction: column; gap: 4px; font-size: 0.75rem; opacity: 0.6; }
         .meta-item { display: flex; align-items: center; gap: 5px; }
@@ -147,54 +152,84 @@
         .timer-display { font-family: monospace; font-size: 2rem; font-weight: 800; color: var(--danger); letter-spacing: 2px; }
         .timer-info { font-size: 0.8rem; opacity: 0.8; color: #fff; }
 
-        /* --- SEKAT KATEGORI --- */
         .section-title {
-            grid-column: 1 / -1; 
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 1.25rem;
-            font-weight: 800;
-            color: var(--primary);
-            padding-bottom: 12px;
-            margin-top: 10px;
-            border-bottom: 1px dashed var(--glass-border);
+            grid-column: 1 / -1; display: flex; align-items: center; gap: 10px;
+            font-size: 1.25rem; font-weight: 800; color: var(--primary);
+            padding-bottom: 12px; margin-top: 10px; border-bottom: 1px dashed var(--glass-border);
             animation: fadeInDown 0.5s ease;
         }
 
-        .section-title.old {
-            color: rgba(255, 255, 255, 0.5); 
-            margin-top: 1rem;
-            border-bottom-color: rgba(255, 255, 255, 0.1);
-        }
+        .section-title.old { color: rgba(255, 255, 255, 0.5); margin-top: 1rem; border-bottom-color: rgba(255, 255, 255, 0.1); }
 
-        /* Modal Settings */
+        /* MODAL OPTIMIZATION (Perbaikan Blur dan Scroll) */
         .modal-overlay {
-            position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(10, 15, 11, 0.8);
-            backdrop-filter: blur(10px); z-index: 1000; display: flex; align-items: center; justify-content: center;
-            opacity: 0; pointer-events: none; transition: 0.3s ease;
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0; 
+            width: 100%; height: 100vh; height: 100dvh; /* Menggunakan Dynamic Viewport Height */
+            background: rgba(10, 15, 11, 0.85);
+            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); /* Tambahan -webkit- untuk kompatibilitas */
+            z-index: 1000; display: flex; align-items: center; justify-content: center;
+            opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
         }
         .modal-overlay.active { opacity: 1; pointer-events: all; }
+        
         .modal-content {
             background: var(--bg-dark); border: 1px solid var(--glass-border); border-radius: 16px;
-            padding: 1.5rem; width: 90%; max-width: 400px; transform: translateY(20px); transition: 0.3s ease;
+            padding: 1.25rem; width: 90%; max-width: 400px; 
+            transform: translateY(20px); transition: transform 0.3s ease;
+            max-height: 85vh; 
+            display: flex; flex-direction: column;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
         }
         .modal-overlay.active .modal-content { transform: translateY(0); }
-        .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
-        .modal-close { background: transparent; border: none; color: #fff; cursor: pointer; opacity: 0.5; transition: 0.3s; }
-        .form-group { display: flex; flex-direction: column; gap: 8px; margin-bottom: 1.2rem; }
+        
+        .modal-body { overflow-y: auto; padding-right: 6px; margin-bottom: 12px; overscroll-behavior: contain; }
+        .modal-body::-webkit-scrollbar { width: 4px; }
+        .modal-body::-webkit-scrollbar-track { background: rgba(255,255,255,0.02); border-radius: 4px; }
+        .modal-body::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 4px; }
+
+        .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-shrink: 0; }
+        .modal-header h3 { margin: 0; font-size: 1.1rem; }
+        .modal-close { background: transparent; border: none; color: #fff; cursor: pointer; opacity: 0.5; transition: 0.3s; padding: 4px; }
+        .modal-close:hover { opacity: 1; color: var(--danger); }
+        
+        .form-group { display: flex; flex-direction: column; gap: 8px; margin-bottom: 1rem; }
         .form-group input {
             background: rgba(46, 204, 113, 0.05); border: 1px solid var(--glass-border);
             padding: 10px 12px; border-radius: 8px; color: #fff; outline: none; font-family: monospace;
         }
-        .modal-actions { display: flex; gap: 8px; }
-        .btn-outline { background: transparent; border: 1px solid var(--danger); color: var(--danger); padding: 10px; border-radius: 8px; flex: 1; cursor: pointer; }
-        .btn-submit { background: var(--primary); border: none; color: #000; padding: 10px; border-radius: 8px; flex: 2; cursor: pointer; font-weight: 700; }
+        .modal-actions { display: flex; gap: 8px; flex-shrink: 0; }
+        .btn-outline { background: transparent; border: 1px solid var(--danger); color: var(--danger); padding: 10px; border-radius: 8px; flex: 1; cursor: pointer; transition: 0.3s; font-weight:600; }
+        .btn-outline:hover { background: rgba(255, 71, 87, 0.1); }
+        .btn-submit { background: var(--primary); border: none; color: #000; padding: 10px; border-radius: 8px; flex: 2; cursor: pointer; font-weight: 700; transition: 0.3s; }
+        .btn-submit:hover { transform: scale(1.02); background: #fff; }
+
+        .source-link-item {
+            display: flex; align-items: center; gap: 8px; margin-bottom: 4px;
+            color: #fff; text-decoration: none; transition: 0.3s; padding: 8px; border-radius: 8px;
+            background: rgba(255, 255, 255, 0.02); border: 1px solid transparent; font-size: 0.85rem;
+        }
+        .source-link-item:hover { background: rgba(46, 204, 113, 0.1); border-color: var(--glass-border); color: var(--primary); }
 
         @keyframes spin { to { transform: rotate(360deg); } }
         @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
 
         footer { padding: 1.5rem; text-align: center; border-top: 1px solid var(--glass-border); opacity: 0.6; font-size: 0.8rem; }
+
+        /* PENYESUAIAN KHUSUS LAYAR HP */
+        @media (max-width: 480px) {
+            .hide-mobile { display: none; }
+            nav { padding: 1rem 4%; } 
+            .logo { font-size: 1.15rem; gap: 6px; } 
+            .nav-actions { gap: 6px; } 
+            .nav-btn { 
+                padding: 6px 8px; 
+                font-size: 0.75rem; 
+                min-height: 32px; 
+                min-width: 32px; 
+                justify-content: center; 
+            } 
+            .card { padding: 1rem; }
+        }
     </style>
 </head>
 <body>
@@ -204,6 +239,9 @@
             <i data-lucide="shield-check"></i> Siroha
         </div>
         <div class="nav-actions">
+            <button class="nav-btn" onclick="toggleAboutModal()">
+                <i data-lucide="info" size="16"></i> <span class="hide-mobile">About</span>
+            </button>
             <button class="nav-btn" onclick="toggleTokenModal()">
                 <i data-lucide="key" size="16"></i> <span id="token-status">Limit Standar</span>
             </button>
@@ -212,34 +250,87 @@
 
     <header class="hero">
         <h1>Keybox Collection</h1>
-        <p>Penyimpanan XML & ZIP Keybox terbaru.</p>
+        <p>Penyimpanan Keybox XML & ZIP terbaru.</p>
     </header>
 
     <main class="container" id="keybox-grid"></main>
 
-    <footer>&copy; 2026 Komunitas Siroha.</footer>
+    <footer>&copy; 2026 Rahmat Sobrian | #Nasgor aliases Siroha.</footer>
+
+    <div class="modal-overlay" id="about-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 style="display: flex; align-items: center; gap: 8px; color: var(--primary);">
+                    <i data-lucide="info" size="18"></i> Tentang Website Ini
+                </h3>
+                <button class="modal-close" onclick="toggleAboutModal()"><i data-lucide="x"></i></button>
+            </div>
+            
+            <div class="modal-body">
+                <p style="font-size: 0.85rem; opacity: 0.9; margin-bottom: 12px; line-height: 1.5; color: #fff;">
+                    Website ini adalah tempat koleksi keybox yang saya dapat dari berbagai grup/channel yang ada di Telegram. Perlu diketahui bahwa file keybox yang tersedia disini adalah milik pembuat aslinya.
+                </p>
+                
+                <p style="font-size: 0.8rem; margin-bottom: 8px; opacity: 0.8; font-weight: 600; color: #fff;">🔗 Sumber & Pembuat:</p>
+                <div style="margin-bottom: 12px; display: flex; flex-direction: column; gap: 4px;">
+                    
+                    <a href="https://t.me/+xAZq3eIDNjI3MzI1" target="_blank" class="source-link-item">
+                        <i data-lucide="external-link" size="14" color="var(--primary)"></i> 
+                        <span><b>Don't buy!.xml</b> by Azmunaa</span>
+                    </a>
+                    
+                    <a href="https://t.me/yuriiroot" target="_blank" class="source-link-item">
+                        <i data-lucide="external-link" size="14" color="var(--primary)"></i> 
+                        <span><b>Yurikey.zip</b> by Yuri</span>
+                    </a>
+                    
+                    <a href="https://t.me/keyboxstrong" target="_blank" class="source-link-item">
+                        <i data-lucide="external-link" size="14" color="var(--primary)"></i> 
+                        <span><b>Evokerrkey.xml</b> by Evokerr</span>
+                    </a>
+                    
+                    <a href="https://t.me/aleisterprjkst" target="_blank" class="source-link-item">
+                        <i data-lucide="external-link" size="14" color="var(--primary)"></i> 
+                        <span><b>Keybox.xml</b> by Aleister Prjkst</span>
+                    </a>
+                    
+                    <div style="font-size: 0.75rem; color: #fff; opacity: 0.5; padding-left: 6px; margin-top: 2px;">
+                        ...dan sumber-sumber lainnya, serta saya juga sangat berterimakasih kepada para pembuat keybox yg ada.
+                    </div>
+                </div>
+
+                <div style="background: rgba(46, 204, 113, 0.1); border-left: 3px solid var(--primary); padding: 10px; border-radius: 6px; font-size: 0.8rem; color: #fff; line-height: 1.4;">
+                    <b>Misi:</b> Mengumpulkan file Keybox yang ada agar mudah diunduh <b>tanpa aplikasi Telegram.</b> Saya tetap menyarankan Anda untuk bergabung ke grup/channel pembuat keybox aslinya!
+                </div>
+            </div>
+
+            <div class="modal-actions" style="flex-direction: column; gap: 0;">
+                <button class="btn-submit" onclick="toggleAboutModal()" style="width: 100%;">Tutup</button>
+            </div>
+        </div>
+    </div>
 
     <div class="modal-overlay" id="token-modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h3 style="display: flex; align-items: center; gap: 6px; color: var(--primary); font-size: 1.1rem;">
+                <h3 style="display: flex; align-items: center; gap: 6px; color: var(--primary);">
                     <i data-lucide="settings" size="18"></i> API Settings
                 </h3>
                 <button class="modal-close" onclick="toggleTokenModal()"><i data-lucide="x"></i></button>
             </div>
             
-            <div style="font-size: 0.8rem; opacity: 0.8; margin-bottom: 1rem; line-height: 1.4;">
-                Gunakan <b>Personal Access Token</b> GitHub untuk menaikkan limit dari 60 menjadi 5000 request/jam.<br>
-                <a href="https://github.com/settings/tokens/new" target="_blank" style="color: var(--primary); text-decoration: none;">&rarr; Buat Token di sini</a>
+            <div class="modal-body" style="font-size: 0.85rem; color: #fff; opacity: 0.8; line-height: 1.5;">
+                Gunakan <b>Personal Access Token</b> GitHub untuk menaikkan limit dari 60 menjadi 5000 request/jam.<br><br>
+                <a href="https://github.com/settings/tokens/new" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: 600;">&rarr; Buat Token di sini</a>
             </div>
 
-            <div class="form-group">
+            <div class="form-group" style="margin-top: 10px;">
                 <input type="text" id="github-pat" placeholder="ghp_xxxxxxxxxxxxxxxxxxxxxx">
             </div>
 
             <div class="modal-actions">
                 <button class="btn-outline" onclick="removeToken()">Hapus</button>
-                <button class="btn-submit" onclick="saveToken()">Simpan & Muat Ulang</button>
+                <button class="btn-submit" onclick="saveToken()">Simpan</button>
             </div>
         </div>
     </div>
@@ -248,6 +339,7 @@
         const USER = 'rahmatsobrian';
         const REPO = 'keybox-collection';
         const API_CONTENTS_URL = `https://api.github.com/repos/${USER}/${REPO}/contents/`;
+        
         const TELEGRAM_CHANNEL = 'yuriiroot'; 
 
         let storedToken = localStorage.getItem('siroha_github_token') || '';
@@ -255,9 +347,6 @@
         const CACHE_KEY = 'siroha_date_cache';
         let dateCache = JSON.parse(localStorage.getItem(CACHE_KEY)) || {};
 
-        // ==========================================
-        // 1. SISTEM DOWNLOAD CERDAS & ANIMASI (BERLAKU UNTUK XML & ZIP)
-        // ==========================================
         document.addEventListener('click', async function(e) {
             const btn = e.target.closest('.btn-force-dl');
             if (!btn) return;
@@ -302,9 +391,6 @@
             }
         });
 
-        // ==========================================
-        // 2. FUNGSI UTILITAS API & UI
-        // ==========================================
         function updateTokenStatusUI() {
             const statusSpan = document.getElementById('token-status');
             const patInput = document.getElementById('github-pat');
@@ -320,7 +406,25 @@
         }
         updateTokenStatusUI();
 
-        function toggleTokenModal() { document.getElementById('token-modal').classList.toggle('active'); }
+        // Fungsi baru untuk mengecek dan mengunci scroll background
+        function checkModalsScroll() {
+            const isAnyModalActive = document.querySelector('.modal-overlay.active');
+            if (isAnyModalActive) {
+                document.body.classList.add('modal-open');
+            } else {
+                document.body.classList.remove('modal-open');
+            }
+        }
+
+        function toggleTokenModal() { 
+            document.getElementById('token-modal').classList.toggle('active'); 
+            checkModalsScroll();
+        }
+        
+        function toggleAboutModal() { 
+            document.getElementById('about-modal').classList.toggle('active'); 
+            checkModalsScroll();
+        }
 
         function saveToken() {
             const inputVal = document.getElementById('github-pat').value.trim();
@@ -389,9 +493,6 @@
             }, 1000);
         }
 
-        // ==========================================
-        // 3. FUNGSI UTAMA (RENDER KARTU & KATEGORI)
-        // ==========================================
         async function fetchKeyboxes() {
             const grid = document.getElementById('keybox-grid');
             grid.innerHTML = `<div class="status-container" style="color: var(--primary);"><div class="spinner"></div><p style="font-size:0.9rem">Sinkronisasi data...</p></div>`;
@@ -405,28 +506,22 @@
                     return;
                 }
 
-                // Ambil tanggal untuk semua file
                 const filesWithDates = await Promise.all(validFiles.map(async (file) => {
                     const lastUpdated = await getFileDetails(file.path, file.sha);
                     return { ...file, lastUpdated };
                 }));
 
-                // Urutkan dari yang terbaru ke terlama
                 filesWithDates.sort((a, b) => b.lastUpdated - a.lastUpdated);
                 grid.innerHTML = '';
 
-                // ==========================================
-                // LOGIKA PEMISAHAN KATEGORI 3 HARI
-                // ==========================================
-                const newestTime = filesWithDates[0].lastUpdated.getTime(); // Patokan dari file paling baru
-                const THREE_DAYS_MS = 3 * 24 * 60 * 60 * 1000; // 3 hari dalam milidetik
-                const thresholdTime = newestTime - THREE_DAYS_MS; // Batas waktu kategori baru
+                const newestTime = filesWithDates[0].lastUpdated.getTime(); 
+                const THREE_DAYS_MS = 3 * 24 * 60 * 60 * 1000; 
+                const thresholdTime = newestTime - THREE_DAYS_MS; 
 
                 const newKeyboxes = [];
                 const oldKeyboxes = [];
 
                 filesWithDates.forEach(file => {
-                    // Jika waktu file berada dalam jangkauan 3 hari dari file terbaru
                     if (file.lastUpdated.getTime() >= thresholdTime && file.lastUpdated.getTime() !== 0) {
                         newKeyboxes.push(file);
                     } else {
@@ -434,13 +529,11 @@
                     }
                 });
 
-                // Fungsi bantuan untuk membuat kartu
                 function createCardElement(file, index) {
                     const isZip = file.name.endsWith('.zip');
                     const card = document.createElement('div');
                     card.className = 'card';
                     
-                    // Membatasi delay maksimal agar tidak glitch di file yang sangat banyak
                     let animDelay = Math.min(index * 0.05, 0.5);
                     card.style.animation = `fadeInDown 0.4s ease forwards ${animDelay}s`;
                     card.style.opacity = '0';
@@ -448,14 +541,13 @@
                     const cleanName = file.name.replace(/\.(xml|zip)$/i, '');
                     const sizeKB = (file.size / 1024).toFixed(2);
                     
-                    // FORMAT TANGGAL BARU: Menambahkan hari dan tahun
                     let formattedDateTime = "Unknown";
                     if (file.lastUpdated.getTime() !== 0) {
                         formattedDateTime = file.lastUpdated.toLocaleString('id-ID', { 
                             weekday: 'long', 
                             day: 'numeric', 
                             month: 'short', 
-                            year: 'numeric', // Tambahan tahun di sini
+                            year: 'numeric', 
                             hour: '2-digit', 
                             minute: '2-digit' 
                         }).replace(/\./g, ':').replace('pukul ', '');
@@ -498,11 +590,6 @@
                     return card;
                 }
 
-                // ==========================================
-                // RENDER KE LAYAR
-                // ==========================================
-                
-                // 1. Render Sekat & Kartu Kategori "Baru"
                 if (newKeyboxes.length > 0) {
                     const titleBaru = document.createElement('div');
                     titleBaru.className = 'section-title';
@@ -514,7 +601,6 @@
                     });
                 }
 
-                // 2. Render Sekat & Kartu Kategori "Lama"
                 if (oldKeyboxes.length > 0) {
                     const titleLama = document.createElement('div');
                     titleLama.className = 'section-title old';
@@ -569,6 +655,7 @@
             }
         }
 
+        lucide.createIcons();
         fetchKeyboxes();
     </script>
 </body>
