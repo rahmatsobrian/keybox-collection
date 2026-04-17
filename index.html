@@ -469,7 +469,7 @@
                     const safeName = file.name.replace(/"/g, '&quot;');
 
                     let actionsHTML = isZip ? `
-                        <div class="password-badge"><i data-lucide="lock" size="12"></i> File Berpassword & Wajib Ekstrak Dulu Sebelum Dipakai</div>
+                        <div class="password-badge"><i data-lucide="lock" size="12"></i> File Berpassword <br> Wajib Ekstrak Dulu Sebelum Dipakai</div>
                         <div class="btn-row">
                             <a href="${telegramSearchUrl}" target="_blank" class="btn-action btn-telegram"><i data-lucide="send" size="14"></i> Password</a>
                             <button type="button" class="btn-action btn-zip btn-force-dl" data-url="${safeUrl}" data-filename="${safeName}">
