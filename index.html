@@ -10,22 +10,6 @@
     <meta name="keywords" content="Siroha, Keybox, XML Keybox, Play Integrity Fix, PIF, Android Modding, Root, Magisk, KernelSU, Android 15">
     <meta name="author" content="Rahmat Sobrian (Siroha Community)">
     <meta name="theme-color" content="#2ecc71">
-    <meta name="robots" content="index, follow">
-
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://rahmatsobrian.github.io/keybox-collection/">
-    <meta property="og:title" content="Siroha Keybox Collection | Android Modding">
-    <meta property="og:description" content="Pusat unduhan Keybox dengan antarmuka modern, ringan, dan cepat. Temukan konfigurasi XML & ZIP terbaik di sini.">
-    <meta property="og:image" content="https://raw.githubusercontent.com/rahmatsobrian/keybox-collection/main/preview.png">
-    <meta property="og:site_name" content="Siroha Community">
-    <meta property="og:locale" content="id_ID">
-
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="https://rahmatsobrian.github.io/keybox-collection/">
-    <meta name="twitter:title" content="Siroha Keybox Collection | Android Modding">
-    <meta name="twitter:description" content="Pusat unduhan Keybox dengan antarmuka modern, ringan, dan cepat. Temukan konfigurasi XML & ZIP terbaik di sini.">
-    <meta name="twitter:image" content="https://raw.githubusercontent.com/rahmatsobrian/keybox-collection/main/preview.png">
-    <meta name="twitter:creator" content="@SobrixJJ">
 
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -35,9 +19,8 @@
             --primary: #2ecc71;
             --primary-glow: rgba(46, 204, 113, 0.4);
             --warning: #ffb142;
-            --warning2: #2ecc71;
             --danger: #ff4757;
-            --telegram: #ffffff;
+            --telegram: #2AABEE;
             --bg-dark: #0a0f0b;
             --glass: rgba(46, 204, 113, 0.05);
             --glass-border: rgba(46, 204, 113, 0.2);
@@ -119,12 +102,15 @@
         .btn-action {
             flex: 1; padding: 10px; border: none; border-radius: 10px; font-weight: 700; font-size: 0.8rem;
             cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;
-            transition: 0.3s; text-decoration: none;
+            transition: 0.3s; text-decoration: none; font-family: 'Plus Jakarta Sans', sans-serif;
         }
 
         .btn-primary { background: var(--primary); color: #000; }
-        .btn-zip { background: var(--warning2); color: #000; }
-        .btn-telegram { background: rgba(42, 171, 238, 1.0); color: var(--telegram); border: 1px solid rgba(42, 171, 238, 0.3); }
+        .btn-primary:hover { transform: scale(1.02); background: #fff; }
+        .btn-zip { background: var(--warning); color: #000; }
+        .btn-zip:hover { transform: scale(1.02); background: #fff; }
+        .btn-telegram { background: rgba(42, 171, 238, 0.15); color: var(--telegram); border: 1px solid rgba(42, 171, 238, 0.3); }
+        .btn-telegram:hover { transform: scale(1.02); background: var(--telegram); color: #fff; }
 
         .status-container { grid-column: 1 / -1; text-align: center; padding: 2rem 5%; display: flex; flex-direction: column; align-items: center; }
         .spinner {
@@ -226,14 +212,66 @@
         const USER = 'rahmatsobrian';
         const REPO = 'keybox-collection';
         const API_CONTENTS_URL = `https://api.github.com/repos/${USER}/${REPO}/contents/`;
-        const TELEGRAM_CHANNEL = 'yuriiroot'; 
+        const TELEGRAM_CHANNEL = 'KomunitasSiroha'; 
 
         let storedToken = localStorage.getItem('siroha_github_token') || '';
         let countdownInterval;
-
         const CACHE_KEY = 'siroha_date_cache';
         let dateCache = JSON.parse(localStorage.getItem(CACHE_KEY)) || {};
 
+        // ==========================================
+        // 1. SISTEM DOWNLOAD CERDAS & ANIMASI (BERLAKU UNTUK XML & ZIP)
+        // ==========================================
+        document.addEventListener('click', async function(e) {
+            // Targetkan semua tombol dengan kelas btn-force-dl (berlaku untuk XML & ZIP)
+            const btn = e.target.closest('.btn-force-dl');
+            if (!btn) return;
+
+            e.preventDefault();
+            
+            const url = btn.getAttribute('data-url');
+            const filename = btn.getAttribute('data-filename');
+            const originalHTML = btn.innerHTML;
+            
+            try {
+                // Efek loading sinkron di tombol yang diklik
+                btn.innerHTML = `<i data-lucide="loader" class="spinner" style="width: 14px; height: 14px; border-width: 2px; margin-bottom: 0;"></i> Proses...`;
+                btn.style.pointerEvents = 'none';
+                btn.style.opacity = '0.7';
+                lucide.createIcons();
+
+                const response = await fetch(url);
+                if (!response.ok) throw new Error('Gagal mengakses data file.');
+                
+                const blob = await response.blob();
+                const blobUrl = window.URL.createObjectURL(blob);
+                
+                const a = document.createElement('a');
+                a.style.display = 'none';
+                a.href = blobUrl;
+                a.download = filename;
+                
+                document.body.appendChild(a);
+                a.click();
+                
+                window.URL.revokeObjectURL(blobUrl);
+                document.body.removeChild(a);
+                
+            } catch (error) {
+                console.error('Download gagal:', error);
+                window.open(url, '_blank');
+            } finally {
+                // Kembalikan tombol seperti semula
+                btn.innerHTML = originalHTML;
+                btn.style.pointerEvents = 'auto';
+                btn.style.opacity = '1';
+                lucide.createIcons();
+            }
+        });
+
+        // ==========================================
+        // 2. FUNGSI UTILITAS API & UI
+        // ==========================================
         function updateTokenStatusUI() {
             const statusSpan = document.getElementById('token-status');
             const patInput = document.getElementById('github-pat');
@@ -281,9 +319,7 @@
         }
 
         async function getFileDetails(path, fileSha) {
-            if (dateCache[fileSha]) {
-                return new Date(dateCache[fileSha]);
-            }
+            if (dateCache[fileSha]) return new Date(dateCache[fileSha]);
 
             try {
                 const data = await fetchWithAuth(`https://api.github.com/repos/${USER}/${REPO}/commits?path=${path}&per_page=1`);
@@ -320,9 +356,12 @@
             }, 1000);
         }
 
+        // ==========================================
+        // 3. FUNGSI UTAMA (RENDER KARTU)
+        // ==========================================
         async function fetchKeyboxes() {
             const grid = document.getElementById('keybox-grid');
-            grid.innerHTML = `<div class="status-container" style="color: var(--primary);"><div class="spinner"></div><p style="font-size:0.9rem">Sinkronisasi data (Menggunakan Cache jika tersedia)...</p></div>`;
+            grid.innerHTML = `<div class="status-container" style="color: var(--primary);"><div class="spinner"></div><p style="font-size:0.9rem">Sinkronisasi data...</p></div>`;
             
             try {
                 const data = await fetchWithAuth(API_CONTENTS_URL);
@@ -357,14 +396,22 @@
                     const iconBoxClass = isZip ? 'icon-box zip-type' : 'icon-box';
                     const telegramSearchUrl = `https://t.me/${TELEGRAM_CHANNEL}?q=${encodeURIComponent(cleanName)}`;
 
+                    const safeUrl = file.download_url.replace(/"/g, '&quot;');
+                    const safeName = file.name.replace(/"/g, '&quot;');
+
+                    // PERUBAHAN: Tombol ZIP sekarang juga menggunakan <button> dengan kelas .btn-force-dl
                     let actionsHTML = isZip ? `
                         <div class="password-badge"><i data-lucide="lock" size="12"></i> Berpassword</div>
                         <div class="btn-row">
                             <a href="${telegramSearchUrl}" target="_blank" class="btn-action btn-telegram"><i data-lucide="send" size="14"></i> Sandi</a>
-                            <a href="${file.download_url}" class="btn-action btn-zip" download><i data-lucide="download" size="14"></i> Unduh</a>
+                            <button type="button" class="btn-action btn-zip btn-force-dl" data-url="${safeUrl}" data-filename="${safeName}">
+                                <i data-lucide="download" size="14"></i> Unduh
+                            </button>
                         </div>
                     ` : `
-                        <a href="${file.download_url}" class="btn-action btn-primary" download><i data-lucide="download" size="14"></i> Unduh</a>
+                        <button type="button" class="btn-action btn-primary btn-force-dl" data-url="${safeUrl}" data-filename="${safeName}">
+                            <i data-lucide="download" size="14"></i> Download XML
+                        </button>
                     `;
 
                     card.innerHTML = `
