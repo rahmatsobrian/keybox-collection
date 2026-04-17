@@ -69,29 +69,27 @@
 
         .container {
             padding: 1.5rem 5% 4rem; display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px; align-items: start;
+            gap: 20px; align-items: start; 
         }
 
-.card {
-    background: var(--glass); 
-    backdrop-filter: blur(10px); 
-    -webkit-backdrop-filter: blur(10px); /* Dukungan Safari/Webkit */
-    border: 1px solid var(--glass-border);
-    border-radius: 16px; 
-    padding: 1.2rem; 
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    display: flex; 
-    flex-direction: column; 
-    position: relative; 
-    /* Hapus height: 100%; agar kartu tidak memanjang secara paksa */
-
-    /* Fix bug blank/glitch render di Chrome Android */
-    will-change: transform, opacity;
-    transform: translateZ(0);
-    -webkit-transform: translateZ(0);
-    backface-visibility: hidden;
-}
-
+        .card {
+            background: var(--glass); 
+            backdrop-filter: blur(10px); 
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px; 
+            padding: 1.2rem; 
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex; 
+            flex-direction: column; 
+            position: relative; 
+            
+            /* Hardware Acceleration */
+            will-change: transform, opacity;
+            transform: translateZ(0);
+            -webkit-transform: translateZ(0);
+            backface-visibility: hidden;
+        }
 
         .card:hover { transform: translateY(-5px); border-color: var(--primary); box-shadow: 0 10px 30px rgba(46, 204, 113, 0.1); }
 
@@ -148,6 +146,27 @@
         }
         .timer-display { font-family: monospace; font-size: 2rem; font-weight: 800; color: var(--danger); letter-spacing: 2px; }
         .timer-info { font-size: 0.8rem; opacity: 0.8; color: #fff; }
+
+        /* --- SEKAT KATEGORI --- */
+        .section-title {
+            grid-column: 1 / -1; 
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--primary);
+            padding-bottom: 12px;
+            margin-top: 10px;
+            border-bottom: 1px dashed var(--glass-border);
+            animation: fadeInDown 0.5s ease;
+        }
+
+        .section-title.old {
+            color: rgba(255, 255, 255, 0.5); 
+            margin-top: 1rem;
+            border-bottom-color: rgba(255, 255, 255, 0.1);
+        }
 
         /* Modal Settings */
         .modal-overlay {
@@ -240,7 +259,6 @@
         // 1. SISTEM DOWNLOAD CERDAS & ANIMASI (BERLAKU UNTUK XML & ZIP)
         // ==========================================
         document.addEventListener('click', async function(e) {
-            // Targetkan semua tombol dengan kelas btn-force-dl (berlaku untuk XML & ZIP)
             const btn = e.target.closest('.btn-force-dl');
             if (!btn) return;
 
@@ -251,7 +269,6 @@
             const originalHTML = btn.innerHTML;
             
             try {
-                // Efek loading sinkron di tombol yang diklik
                 btn.innerHTML = `<i data-lucide="loader" class="spinner" style="width: 14px; height: 14px; border-width: 2px; margin-bottom: 0;"></i> Proses...`;
                 btn.style.pointerEvents = 'none';
                 btn.style.opacity = '0.7';
@@ -278,7 +295,6 @@
                 console.error('Download gagal:', error);
                 window.open(url, '_blank');
             } finally {
-                // Kembalikan tombol seperti semula
                 btn.innerHTML = originalHTML;
                 btn.style.pointerEvents = 'auto';
                 btn.style.opacity = '1';
@@ -374,7 +390,7 @@
         }
 
         // ==========================================
-        // 3. FUNGSI UTAMA (RENDER KARTU)
+        // 3. FUNGSI UTAMA (RENDER KARTU & KATEGORI)
         // ==========================================
         async function fetchKeyboxes() {
             const grid = document.getElementById('keybox-grid');
@@ -389,27 +405,61 @@
                     return;
                 }
 
+                // Ambil tanggal untuk semua file
                 const filesWithDates = await Promise.all(validFiles.map(async (file) => {
                     const lastUpdated = await getFileDetails(file.path, file.sha);
                     return { ...file, lastUpdated };
                 }));
 
+                // Urutkan dari yang terbaru ke terlama
                 filesWithDates.sort((a, b) => b.lastUpdated - a.lastUpdated);
                 grid.innerHTML = '';
 
-                filesWithDates.forEach((file, index) => {
+                // ==========================================
+                // LOGIKA PEMISAHAN KATEGORI 3 HARI
+                // ==========================================
+                const newestTime = filesWithDates[0].lastUpdated.getTime(); // Patokan dari file paling baru
+                const THREE_DAYS_MS = 3 * 24 * 60 * 60 * 1000; // 3 hari dalam milidetik
+                const thresholdTime = newestTime - THREE_DAYS_MS; // Batas waktu kategori baru
+
+                const newKeyboxes = [];
+                const oldKeyboxes = [];
+
+                filesWithDates.forEach(file => {
+                    // Jika waktu file berada dalam jangkauan 3 hari dari file terbaru
+                    if (file.lastUpdated.getTime() >= thresholdTime && file.lastUpdated.getTime() !== 0) {
+                        newKeyboxes.push(file);
+                    } else {
+                        oldKeyboxes.push(file);
+                    }
+                });
+
+                // Fungsi bantuan untuk membuat kartu
+                function createCardElement(file, index) {
                     const isZip = file.name.endsWith('.zip');
                     const card = document.createElement('div');
                     card.className = 'card';
-                    // Membatasi delay maksimal hanya sampai 0.5 detik agar tidak kelamaan
-let animDelay = Math.min(index * 0.05, 0.5);
-card.style.animation = `fadeInDown 0.4s ease forwards ${animDelay}s`;
+                    
+                    // Membatasi delay maksimal agar tidak glitch di file yang sangat banyak
+                    let animDelay = Math.min(index * 0.05, 0.5);
+                    card.style.animation = `fadeInDown 0.4s ease forwards ${animDelay}s`;
                     card.style.opacity = '0';
 
                     const cleanName = file.name.replace(/\.(xml|zip)$/i, '');
                     const sizeKB = (file.size / 1024).toFixed(2);
-                    const formattedDateTime = file.lastUpdated.getTime() === 0 ? "Unknown" : 
-                        file.lastUpdated.toLocaleString('id-ID', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
+                    
+                    // FORMAT TANGGAL BARU: Menambahkan hari dan tahun
+                    let formattedDateTime = "Unknown";
+                    if (file.lastUpdated.getTime() !== 0) {
+                        formattedDateTime = file.lastUpdated.toLocaleString('id-ID', { 
+                            weekday: 'long', 
+                            day: 'numeric', 
+                            month: 'short', 
+                            year: 'numeric', // Tambahan tahun di sini
+                            hour: '2-digit', 
+                            minute: '2-digit' 
+                        }).replace(/\./g, ':').replace('pukul ', '');
+                    }
 
                     const iconType = isZip ? 'file-archive' : 'file-code';
                     const iconBoxClass = isZip ? 'icon-box zip-type' : 'icon-box';
@@ -418,7 +468,6 @@ card.style.animation = `fadeInDown 0.4s ease forwards ${animDelay}s`;
                     const safeUrl = file.download_url.replace(/"/g, '&quot;');
                     const safeName = file.name.replace(/"/g, '&quot;');
 
-                    // PERUBAHAN: Tombol ZIP sekarang juga menggunakan <button> dengan kelas .btn-force-dl
                     let actionsHTML = isZip ? `
                         <div class="password-badge"><i data-lucide="lock" size="12"></i> Berpassword</div>
                         <div class="btn-row">
@@ -446,8 +495,36 @@ card.style.animation = `fadeInDown 0.4s ease forwards ${animDelay}s`;
                         </div>
                         <div class="card-actions">${actionsHTML}</div>
                     `;
-                    grid.appendChild(card);
-                });
+                    return card;
+                }
+
+                // ==========================================
+                // RENDER KE LAYAR
+                // ==========================================
+                
+                // 1. Render Sekat & Kartu Kategori "Baru"
+                if (newKeyboxes.length > 0) {
+                    const titleBaru = document.createElement('div');
+                    titleBaru.className = 'section-title';
+                    titleBaru.innerHTML = '<i data-lucide="sparkles"></i> Update Baru';
+                    grid.appendChild(titleBaru);
+
+                    newKeyboxes.forEach((file, index) => {
+                        grid.appendChild(createCardElement(file, index));
+                    });
+                }
+
+                // 2. Render Sekat & Kartu Kategori "Lama"
+                if (oldKeyboxes.length > 0) {
+                    const titleLama = document.createElement('div');
+                    titleLama.className = 'section-title old';
+                    titleLama.innerHTML = '<i data-lucide="history"></i> Arsip Lama';
+                    grid.appendChild(titleLama);
+
+                    oldKeyboxes.forEach((file, index) => {
+                        grid.appendChild(createCardElement(file, index + newKeyboxes.length));
+                    });
+                }
 
                 lucide.createIcons();
 
