@@ -69,14 +69,29 @@
 
         .container {
             padding: 1.5rem 5% 4rem; display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px; align-items: stretch;
+            gap: 20px; align-items: start;
         }
 
-        .card {
-            background: var(--glass); backdrop-filter: blur(10px); border: 1px solid var(--glass-border);
-            border-radius: 16px; padding: 1.2rem; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            display: flex; flex-direction: column; position: relative; height: 100%;
-        }
+.card {
+    background: var(--glass); 
+    backdrop-filter: blur(10px); 
+    -webkit-backdrop-filter: blur(10px); /* Dukungan Safari/Webkit */
+    border: 1px solid var(--glass-border);
+    border-radius: 16px; 
+    padding: 1.2rem; 
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex; 
+    flex-direction: column; 
+    position: relative; 
+    /* Hapus height: 100%; agar kartu tidak memanjang secara paksa */
+
+    /* Fix bug blank/glitch render di Chrome Android */
+    will-change: transform, opacity;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    backface-visibility: hidden;
+}
+
 
         .card:hover { transform: translateY(-5px); border-color: var(--primary); box-shadow: 0 10px 30px rgba(46, 204, 113, 0.1); }
 
@@ -386,7 +401,9 @@
                     const isZip = file.name.endsWith('.zip');
                     const card = document.createElement('div');
                     card.className = 'card';
-                    card.style.animation = `fadeInDown 0.3s ease forwards ${index * 0.05}s`;
+                    // Membatasi delay maksimal hanya sampai 0.5 detik agar tidak kelamaan
+let animDelay = Math.min(index * 0.05, 0.5);
+card.style.animation = `fadeInDown 0.4s ease forwards ${animDelay}s`;
                     card.style.opacity = '0';
 
                     const cleanName = file.name.replace(/\.(xml|zip)$/i, '');
