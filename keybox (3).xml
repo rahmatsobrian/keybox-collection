@@ -1,0 +1,232 @@
+<?xml version="1.0"?>
+<AndroidAttestation>
+    <NumberOfKeyboxes>1</NumberOfKeyboxes>
+    <Keybox DeviceID="@kernelrootservice ">
+        <Key algorithm="ecdsa">
+            <PrivateKey format="pem">
+-----BEGIN EC PRIVATE KEY-----
+MHcCAQEEIEg0UfQKL6ntTHT2quQZEkuNWEOhyOt1gjDeK4Q0xu2soAoGCCqGSM49
+AwEHoUQDQgAEj4ZiXkVUuCtMz8zBD+J7zoQoQ2FxnA6djfkDB4UDyM4wkq5e4dkh
+cFGeXfjK1tEEGcCkQ9vzd/87nZ9H5qnRRw==
+-----END EC PRIVATE KEY-----
+            </PrivateKey>
+            <CertificateChain>
+                <NumberOfCertificates>3</NumberOfCertificates>
+                <Certificate format="pem">
+-----BEGIN CERTIFICATE-----<!--https://t.me/kernelrootservice -->
+MIIB8zCCAXqgAwIBAgIRAIYW7zBnntQ8wrQ+PJeiMZ4wCgYIKoZIzj0EAwIwOTEM<!--https://t.me/kernelrootservice -->
+MAoGA1UEDAwDVEVFMSkwJwYDVQQFEyBkZDFmOGRiM2JmOTdlMGMzYmU4NGQ5MWI0<!--https://t.me/kernelrootservice -->
+NjZiZmVmNTAeFw0yMTA2MTYxOTI1MjNaFw0zMTA2MTQxOTI1MjNaMDkxDDAKBgNV<!--https://t.me/kernelrootservice -->
+BAwMA1RFRTEpMCcGA1UEBRMgNmZlMmY5MTljMWU5ZDg3NzY2NTU2YjlhOWYwNzFj<!--https://t.me/kernelrootservice -->
+NTEwWTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAASPhmJeRVS4K0zPzMEP4nvOhChD<!--https://t.me/kernelrootservice -->
+YXGcDp2N+QMHhQPIzjCSrl7h2SFwUZ5d+MrW0QQZwKRD2/N3/zudn0fmqdFHo2Mw<!--https://t.me/kernelrootservice -->
+YTAdBgNVHQ4EFgQUWjmuj4Sjwc9TteEM+C8dykBcnuswHwYDVR0jBBgwFoAUtTs2<!--https://t.me/kernelrootservice -->
+EISVfwpQZXgJvg7viuWlegswDwYDVR0TAQH/BAUwAwEB/zAOBgNVHQ8BAf8EBAMC<!--https://t.me/kernelrootservice -->
+AgQwCgYIKoZIzj0EAwIDZwAwZAIwJAqOOg/c/QrPOZwQYd17G8s9B+QXz0EGnVAl<!--https://t.me/kernelrootservice -->
+BtgVrFyZ5+hIUVMjfmdv/9Dty6ydAjBhp1BJGrZmkGtWvkJQW6VKAhJDQDARdJBW<!--https://t.me/kernelrootservice -->
+kBAXtXSfx8qOz0yvYYCa43kYWTMpses=
+-----END CERTIFICATE-----
+                </Certificate><!--https://t.me/kernelrootservice -->
+                <Certificate format="pem"><!--https://t.me/kernelrootservice -->
+-----BEGIN CERTIFICATE-----<!--https://t.me/kernelrootservice -->
+MIIDlDCCAXygAwIBAgIRAPzMzxPfkAGVlkZxhCUxZs8wDQYJKoZIhvcNAQELBQAw
+GzEZMBcGA1UEBRMQZjkyMDA5ZTg1M2I2YjA0NTAeFw0yMTA2MTYxOTIyMjNaFw0z
+MTA2MTQxOTIyMjNaMDkxDDAKBgNVBAwMA1RFRTEpMCc<!--https://t.me/kernelrootservice -->GA1UEBRMgZGQxZjhkYjNi
+Zjk3ZTBjM2JlODRkOTFiNDY2Ym<!--https://t.me/kernelrootservice -->ZlZjUwdjAQBgcqhkjOPQIBBgUrgQQAIgNiAAQw
+DMeOJy+e09mAU9d6WD9/uLGUa7S8zLVjMw0S8/ZlpXqgH51c87i9ve2H7fGn+BZQ
+0WEyweELyIDqQV1rLzE2dy2tC5FZXYYXglvtd3sGb9GamIaSYjzQa+YYPmAbSbaj
+YzBhMB0GA1UdDgQWBBS1OzYQhJV/ClBleAm+Du+K5aV6CzAfBgNVHSMEG<!--https://t.me/kernelrootservice -->DAWgBQ2
+YeEAfIgFCVGLRGxH/xpMyepPEjAPBgNV<!--https://t.me/kernelrootservice -->HRMBAf8EBTADAQH/<!--https://t.me/kernelrootservice -->MA4GA1UdDwEB/wQE
+AwICBDANBgkqhkiG9w0BAQsFAAO<!--https://t.me/kernelrootservice -->CAgEAIOoTf4lTa4tFDYdJaTNcLQNWf88FWK01
+tybKHKadOQI3lJcLe5LN7ZR/+5CnCndESY7fRa9vryLs5vcO8XYFAP<!--https://t.me/kernelrootservice -->YXgi9DZhiw
+HavO2Nb8a1R2o9rYd/h5k34a7/V8+3<!--https://t.me/kernelrootservice -->Di2CWA4IZgusd+agyU4cwbUk42Firn6Vpg
+mhg0HzSFwhxBnqeauj+hVSsGtpLYLMF2IqmMtQyOLc9/E37Bo+4FM0/SVFgurfn2
+lH6Y/Gn6YOCb+iIxl0x7mjqcpSa2<!--https://t.me/kernelrootservice -->fd6wUOMpjImMt/w5bJ+yhO2UdBeAGjVYuWTm
++3UK0Boenbrs4xa3atEqucAVKKEHy<!--https://t.me/kernelrootservice -->OUeuCZnY+4haSpQZBL4vaY5W2A7/S5F9Okp
+YXIHPX5j01OjJFnaCj<!--https://t.me/kernelrootservice -->p6NS/Hq0S4wrNkgjvqXYnl5Q7Anl1aE00K<!--https://t.me/kernelrootservice -->kSDvVw7NncCR
+y1uwUFi+9SKBY3r82GbSouFi25gGPRaCZDbIJ/pwnaJR6Zp8dinz2gjBnC3vNnec
+tdR0LUy7GNkBFPjKNxyHjj3IhMGaZavfJWDLMKgeX7Fbf2eFGIiSvTIAl17MYpti
+bhWOc+94f6hbImSjuHpicyMm<!--https://t.me/kernelrootservice -->zk9lU0+U6LLkSMkFRVfS3Fdi9Vr+dugM0XubVeyC
+RUOc5WjoC4l5LOkjHmV+dyIeviOLxPBP2yST6GEvKXTJMr/hJ5d<!--https://t.me/kernelrootservice -->shqqYKlmAH8fK
+5x/cOrPaJL4=
+-----END CERTIFICATE-----
+                </Certificate>
+                <Certificate format="pem">
+-----BEGIN CERTIFICATE-----
+MIIFHDCCAwSgAwIBAgIJANUP8luj8<!--https://t.me/kernelrootservice -->tazMA0GCSqGSIb3DQEBCwUAMBsx<!--https://t.me/kernelrootservice -->GTAXBgNV
+BAUTEGY5MjAwOWU4NTNiNmIwNDUwHhcNMTkxMTIyMjAzNzU4WhcNMzQxMTE4MjAz
+NzU4WjAbMRkwFwYDVQQFExBmOTIwM<!--https://t.me/kernelrootservice -->DllODUzYjZiMDQ1MIICIjANBgkqhkiG9w0B
+AQEFAAOCAg8AMIICCgKCAgEAr7bHgiuxp<!--https://t.me/kernelrootservice -->wHsK7Qui8xUFmOr75gvMsd/dTEDDJdS
+Sxtf6An7xyqpRR90PL2abxM1dEqlXnf2tqw1<!--https://t.me/kernelrootservice -->Ne4Xwl5jlRfdnJLmN0pTy/4lj4/7
+tv0Sk3iiKkypnEUtR6WfMgH0QZfKHM1+di+<!--https://t.me/kernelrootservice -->y9TFRtv6y//0rb+T+W8a9nsNL/ggj
+nar86461qO0rOs2cXjp3kOG1FEJ5MVmFmB<!--https://t.me/kernelrootservice -->GtnrKpa73XpXyTqRxB/M0n<!--https://t.me/kernelrootservice -->1n/W9nGq
+C4FSYa04T6N5RIZGBN2z2MT5IKGbFlbC8U<!--https://t.me/kernelrootservice -->rW0DxW7AYImQQcHtGl/m00QLVWutHQ
+oVJYnFPlXTcHYvASLu+RhhsbDmxMgJJ0mcDpvsC4PjvB+TxywE<!--https://t.me/kernelrootservice -->lgS70vE0XmLD+O
+JtvsBslHZvPBKCOdT0MS+tgSOIfga+z1<!--https://t.me/kernelrootservice -->Z1g7+DVagf7quvmag8jfPioyKvxnK/Eg
+sTUVi2ghzq8wm27ud/mIM7AY2qEORR8Go3TVB4HzWQgpZrt3i5<!--https://t.me/kernelrootservice -->MIlCaY504LzSRi
+igHCzAPlHws+W0rB5N+er5/2pJKnfBSDiCiFAVtCLOZ7gLiMm0<!--https://t.me/kernelrootservice -->jhO2B6tUXHI/+M
+RPjy02i59lINMRRev56GKtcd9qO/0kUJWd<!--https://t.me/kernelrootservice -->ZTdA2XoS82ixPvZtXQpUpuL12ab+9E
+aDK8Z4RHJYYfCT3Q5vNAXaiWQ+8PTWm<!--https://t.me/kernelrootservice -->2QgBR/bkwSWc+NpUFgNPN9PvQi8WEg5Um
+AGMCAwEAAaNjMGEwHQYDVR0OBBYEFD<!--https://t.me/kernelrootservice -->Zh4QB8iAUJUYtEbEf/GkzJ6k8SMB8GA1Ud
+IwQYMBaAFDZh4QB8iAUJUYtEbEf/GkzJ6k8SMA8GA1UdEwEB/wQFMAMBAf8<!--https://t.me/kernelrootservice -->wDgYD
+VR0PAQH/BAQDAgIEMA0GCSqGSIb3DQEBCwUAA4I<!--https://t.me/kernelrootservice -->CAQBOMaBc8oumXb2voc7XCWnu
+XKhBBK3e2KMGz39t7lA3XXRe2ZLLAkLM5<!--https://t.me/kernelrootservice -->y3J7tURkf5a1SutfdOyXAmeE6SRo83U
+h6WszodmMkxK5GM4JGrnt4pBisu5igXEyd<!--https://t.me/kernelrootservice -->aW7qq2CdC6DOGjG+mEkN8/TA6p3cno
+L/sPyz6evdjLlSeJ8rFBH6xWyIZCbrcpYEJzX<!--https://t.me/kernelrootservice -->aUOEaxxXxgYz5/cTiVKN2M1G2ok
+QBUIYSY6bjEL4aUN5cfo7ogP3UvliEo3Eo0Yg<!--https://t.me/kernelrootservice -->wuzR2v0KR6C1cZqZJSTnghIC/vA
+D32KdNQ+c3N+vl2OTsUVMC1GiWkngNx1OO1+kXW+YTnnTUOtOIswUP/Vqd5SYgAI
+mMAfY8U9/iIgkQj6T2W6FsScy94IN9fFhE1UtzmLoBIuUFsVXJMTz+Jucth+IqoW
+Fua9v1R93/k98p41pjtFX+H8DslVgfP097vju4KDlqN64xV1grw3ZLl4CiOe/A91
+oeLm2UHOq6wn3esB4r2EIQKb6jTVGu5sYCcdWpXr0AUVqcABPdgL+H7qJguBw09o
+jm6xNIrw2OocrDKsudk/okr/AwqEyPKw9WnMlQgLIKw1rODG2NvU9oR3GVGdMkUB
+ZutL8VuFkERQGt6vQ2OCw0sV47VMkuYbacK/xyZFiRcrPJPb41zgbQj9XAEyLKCH
+ex0SdDrx+tWUDqG8At2JHA==
+-----END CERTIFICATE-----
+                </Certificate>
+            </CertificateChain>
+        </Key>
+
+        <Key algorithm="rsa">
+            <PrivateKey format="pem">
+-----BEGIN RSA PRIVATE KEY-----
+MIIG4wIBAAKCAYEAu+QIhJj7aDTA01fBSB6UX3He4F+I892RZ6sA8SgBubNInrki
+WDdxOUZZA6O/qddxNuQVlaFWygQwKRabL2t4hueYTHyrvgzJyBWV6gStc1gjqvTo
+BAThO5Lq2NsQUs0Qe16UXxRwBPwdKbxckG4F/X03BNHVV0rDCep3tovLEgmdp/gt
+s2YhWuwYEAdhHEU7wH6TWrLGKIe4I9d9rTvMNPzN539LuPgXL18DCuEJUkV4AdFi
+UnapDjT6uTbQEwekT38R8jprerPUQeQofN1oJBpFXzEBud7y7wukKHNDS<!--https://t.me/kernelrootservice -->oh6jZMj
++lWKbE9xiajw9X7ceRAL2ZIaWsUOqSTmg+Y9CDS+<!--https://t.me/kernelrootservice -->azLCjxpYkSvDwgZPNWonbGHr
+nIzxhlLEYieNsEPt1rNmnxZkT<!--https://t.me/kernelrootservice -->vvwBNkkP<!--https://t.me/kernelrootservice -->/iR2awssZYDWpEoEnyBwraeOwDyE7cl
+Er3zrYOn4q+<!--https://t.me/kernelrootservice -->ylrpVK<!--https://t.me/kernelrootservice -->3PM8ygUtqBZh0cNuiaFJtrficSepZeaGPt75jLzQRGPGAVr
+deSFagkcLpvn6C2vAgMBAAECggGABuUeXudSSoetD9R<!--https://t.me/kernelrootservice -->nlmLw5PPDzw4Sc4iM/nXr
+Ce6C6bKnlpOKrBwUvppTR+vpa60pTW9fT2dlTPKMZeWbekkCWkkDcMMedlH30azh
+HH5h<!--https://t.me/kernelrootservice -->cxsn6+0i2ornTQ1eK<!--https://t.me/kernelrootservice -->ukXF0LJOQ3GehrA5Z3u4Ao2h2JSO/QtYbLllld7AtEk
+5YEJybaqn3BfFPdJgBGr7GKo8KWlxLGgbLKkzPX2DvKofQP1wXgJglZMjBQmnalp
+7itF8Uv1VHO/nPEX0RqmnMdjKV+dWuiX34hf5SlCbOCSl2KovKrCSFgRVTDFQTmi
+rgPj7q00Oblf+qtWcyXAJ9Fy0yOSn0jDB9zT2fIwMIT8fXwTIhIEirhYRK56ca5E
+zfZ3Ji9+LyMC/xP12lzeZ/hYw5FYoZOWp8bPabjTFauUR<!--https://t.me/kernelrootservice -->WwTWiKV650Be4+Rr1EP
+z4BFJieKV1W<!--https://t.me/kernelrootservice -->P3+6Vhsp46Xt<!--https://t.me/kernelrootservice -->kezaQXww<!--https://t.me/kernelrootservice -->bdhLg4mKD+4LjxZtSJLTCa<!--https://t.me/kernelrootservice -->Q3e/BgZpwxz
+stTtHbXTlqENJUTOZpbAVKOCBgJRAoHBANz8FFiI6bMfWXTZ3BAE3M4n8+DnCuwR
+6chvI0L4DfCXj1Je70lT3WBdV9zL/vT1X1ndhFV54vetvDF8WHonbpw2an61Mkpr
+njYzRQy2Aq9T7aTQMSdiWlE<!--https://t.me/kernelrootservice -->R7CUcCCMl+dEvU<!--https://t.me/kernelrootservice -->AOXrT0M2Ozw3jFNd6P4EFNhC6Ew
+exVc2<!--https://t.me/kernelrootservice -->C/3UIp+fZ8OWEmi+G/o15y1Bvi1kMoZD8JrLxAhpFawQrSMhL<!--https://t.me/kernelrootservice -->sc0vQkxxeP
+RLI/Et8u1nYD04fGnc+JJsDNaL/+AzgHRwKBwQDZqYwCnycjUa0ihAWJjzDSpa7w
+5I513c6ACW<!--https://t.me/kernelrootservice -->ghxl01M/1VpRG<!--https://t.me/kernelrootservice -->qlgwoIdyfLH9no85axAGKtZKHK/VAttFC2JtQFr63
+R7QjLeqO1wUEX511hP7ZN9/qr6d1rp0tvkVfwn7wvF97uY8YuJxqi1p+nIsgGhRB
+y0H2XXTMSt2QnBuCPTaEouxY3RaOnAQd7GkhlGfQidcJh63YYAM2CAUxxC4wdoF7
+FvMgtGAi62<!--https://t.me/kernelrootservice -->EeyxBFeK2SF95T3gNKDiaroHvkKlkCgcBuBZ9HmRrpkIEkWVdkLleU
+2HVmkwFwGVcQ8KxYqlGeaIb11shB9NwyHycgifwt<!--https://t.me/kernelrootservice -->D4Fip5Q8Tkv/TmN1K9iNMNa0
+Na992<!--https://t.me/kernelrootservice -->E7qmHwTtiD5vCDIE/wsY28lkaUv2cF9lGBEx6KCUJEAyOJ6k8vo499sIoqf
+e2D9ckKtBQsyzp/f+b0CxwlaSHUSbG5OoVm/7q1C5Hrq8+FRxbWPzYAZnPYJGDD5
+S9eHsEvjYfQs3pRRw+sIp<!--https://t.me/kernelrootservice -->M0LO<!--https://t.me/kernelrootservice -->4rUig9eTKaLeDc4DP8CgcBXbyoU64W3RFn+IXZv
++ZstIu0RS16GrmEDQcQYvSw38Ph07OgZ1Ehx3phXQHK1WTHNeCr+Y03HCrtsEYQi
+DAznsRtPWHh<!--https://t.me/kernelrootservice -->eIVW1p14WkaoYySHuc+l4xrLILSpqc6I+g0ymu6THeJSo44/BpNTn
+Q08HyDIW8+U9Z/FBF1nFe0/5k0lRIn<!--https://t.me/kernelrootservice -->k6<!--https://t.me/kernelrootservice -->gSVMiBOHSa45lPnW5WgCJgSJhJgFnlcn
+1JyRTylYHrHvk0WDAXZz/jI9FerzYq8mlWpQ1zplewQJdZECgcEA2n4Qpg12Em4P
+osYJAs0GqMQgjhlTNffwe6kFj46Iy8OtR1mG9OXRmzq6NsEIQaKnn28JWibkkz09
+2NniF6lt53wtJQWSSXFf3LTawR<!--https://t.me/kernelrootservice -->iS7lSUmqZfULiilUoIMmfeBpaj7ZT6NvXzY9PP
+mYKWVJ+DP1Is12<!--https://t.me/kernelrootservice -->hcGEU9UByDg4/BXzv<!--https://t.me/kernelrootservice -->Gzw9o4FcDnN<!--https://t.me/kernelrootservice -->YCepaOj+hItwjqs2oGEWK9
+drRPQm7<!--https://t.me/kernelrootservice -->2SCNy/AITromUFxTV5Cl8tg1IQS4OtiLQEiyco21YyAUu
+-----END RSA PRIVATE KEY-----
+            </PrivateKey>
+            <CertificateChain>
+                <NumberOfCertificates>3</NumberOfCertificates>
+                <Certificate format="pem">
+-----BEGIN CERTIFICATE-----
+MIIE4DCCAsigAwIBAgIRALK/VaUQzuEAZlfWFPGTilIwDQYJKoZIhvcNAQELBQAw
+OTEMMAoGA1UEDAwDVEV<!--https://t.me/kernelrootservice -->FMSkwJw<!--https://t.me/kernelrootservice -->YDVQQFEyBkZDFmOGRiM2JmOTdlMGMzYmU4NGQ5
+MWI0NjZiZmVmNTAeFw0yMTA2MTYxOTI1MjNaFw0zMTA2MTQxOTI1MjNaMDkxDDAK
+BgNVBAwMA1RFR<!--https://t.me/kernelrootservice -->TEpMCcGA1UEBRMgNmZlMmY5MTljMWU5ZDg3NzY2NTU2YjlhOWYw
+NzFjNTEwggGiMA0GCSqGSIb3DQEBA<!--https://t.me/kernelrootservice -->QUAA4IBjwAw<!--https://t.me/kernelrootservice -->ggGKAoIBgQC75AiEmPtoNMDT
+V8FIHpRfcd7gX4jz3ZFnqwDxKAG5s0ieuSJYN3E5RlkDo7+p13E25BWVoVbKBDAp
+Fpsva3iG55hMfK<!--https://t.me/kernelrootservice -->u+DMnIFZXqBK1zWCOq9OgEBOE7kurY2xBSzRB7XpRfFHAE/B0p
+vFyQbgX9fTcE0dVXSsMJ6ne2i8sSCZ2n+C<!--https://t.me/kernelrootservice -->2zZiFa7BgQB2EcRTvAfpNassYoh7gj
+132tO8w0/M3nf0u4+Bcv<!--https://t.me/kernelrootservice -->XwM<!--https://t.me/kernelrootservice -->K4QlSRXgB0WJSdqkONPq5NtATB6RPfxHyOmt6s9RB
+5Ch83WgkGkVfMQG53vLvC6Qoc0NKiHqNkyP6VYpsT3GJqPD1ftx5EAvZkhpaxQ6p
+JOaD5j0INL5rMsKPGli<!--https://t.me/kernelrootservice -->RK8PCBk81aidsYeucjPGGUsRi<!--https://t.me/kernelrootservice -->J42wQ+3Ws2afFmRO+/AE
+2SQ/+<!--https://t.me/kernelrootservice -->JHZrCyxlgNakSgSfIHCtp47APITtyUSvfOtg6fir7KWulUrc8zzKBS2oFmH
+Rw26JoUm2t+JxJ6ll5oY+3vmMvNBEY8YBWt15IVqCR<!--https://t.me/kernelrootservice -->wum+foLa8CAwEAAaNjMGEw
+HQYDVR0OBB<!--https://t.me/kernelrootservice -->YEFLILTMjpvEOZhTE2N<!--https://t.me/kernelrootservice -->O/vxzBoDuchMB8GA1UdIwQYMBaAFDlk3/vK
+LASjKdwFd8yIHu5hZ<!--https://t.me/kernelrootservice -->95SMA8GA1UdEwEB/wQFMAMBAf8wDgYDVR0PAQH/BAQDAgIE
+MA0GCSqGSIb3DQEBCwUAA4ICAQA3pRv<!--https://t.me/kernelrootservice -->TnluSLiMVky9j36Q4Zq+8HNDZeRKnODz6
+UH1wPxmMXP810zvcNDcZyWziJKgxVYnrrNGcvLCQSviDq9aZyGyUykjLLqVvtNe0
+aRTglBprmyPYRlFoj7dznfNylWSZ532XdzHARveLUfApmYZ4TZOOx4mQmZLWPO/F
+dYUl<!--https://t.me/kernelrootservice -->BRgzC<!--https://t.me/kernelrootservice -->Q6T4JY75z0W<!--https://t.me/kernelrootservice -->UYWyfYh+i3p8qKaGoq+zhuehlOBlWqy8untmd3LeBZUj
+A/fRn9hz4+SYSKV5zAgyq0LU<!--https://t.me/kernelrootservice -->1IrdvFDEhPi6EmnXH0m49zhkAjNY17FYkBjkeB80
+H0bzGYdqA2LDvLyxy4ygquFyPKVehEVS9/k0QJJlEzOeCE17Kk5DoO<!--https://t.me/kernelrootservice -->4gw/Gk/jyS
+xEacJ+19OxKbmtB46<!--https://t.me/kernelrootservice -->f/CjONBJr7MVVk03dAtDoKS31ypKj6VvQOCDssbly21TbpJ
+f5257htiHLm8wKohdi9jmyF+<!--https://t.me/kernelrootservice -->9ne6QyL3zozquOimrLbsNBetPP+ZNRVD/X8oxnfj
+HEsYeSPWx<!--https://t.me/kernelrootservice -->HE6KPtCMrR5F/YBRMRLi4sW<!--https://t.me/kernelrootservice -->/MU4cS5L3/YZwfDCVLrmHavix89rfrsT
+8g8r6LL6BAFDR59O/66LZuPppM0wR5L4lrEuzBKF7T9baqnZspozFSloBPniakbK
+H1ZFORhUdRKi4IJN5pBU7Jm<!--https://t.me/kernelrootservice -->HnlZHIfY/5wS5VAJVE1Z2oKmhaHb<!--https://t.me/kernelrootservice -->pU/XkH1mhk3wM
+JJF7xQ==
+-----END CERTIFICATE-----
+                </Certificate>
+                <Certificate format="pem"><!--https://t.me/kernelrootservice -->
+-----BEGIN CERTIFICATE-----
+MIIFQjCCAy<!--https://t.me/kernelrootservice -->qgAwIBAgIRALgk<!--https://t.me/kernelrootservice -->QE6xGEXpbXg5aRaqEUswDQYJKoZIhvcNAQELBQAw
+GzEZMBcGA1UEBRMQZjkyMDA5ZTg1M2I2YjA0NTAeFw0yMTA2MTYxOTIyMDVaFw0z
+MTA2MTQxOTIyMDVaMDkxDDAKB<!--https://t.me/kernelrootservice -->gNVBAwMA1RFRTEpMCcGA1UEBRMgZGQxZjhkYjNi
+Zjk3ZTBjM<!--https://t.me/kernelrootservice -->2JlODRkOTFiNDY2YmZlZjUwggIiMA0GCSqGSIb3DQEBAQUAA4ICDwAw
+ggIKAoICAQC5bMgIOWvC5Ybfkij01Zm9l1AAbZLbu1+g7ZFj6ZCF9T5UcS67qXn/
+rHr7jr/6s2I+gdwvefU2y5+zHX8DVw2hmXBh11G5dbxHpGShh6gUpIwYkjPp+8T3
+CzW4Dwxop0hEY<!--https://t.me/kernelrootservice -->zjFwuprTmqB1DrgE2dH4Ml/naSSvs97mGPWNuPfAD5HkskyQwS6
+gzjR9S4d3dY8PmHSTfeENNvP<!--https://t.me/kernelrootservice -->RqpSbI2/49iBXxBN8tUmy<!--https://t.me/kernelrootservice -->P4Q14eUOMJGlvryD5E1
+YbVXGM5m+0kRazzXkrkM7rgTLLGXGeCR3J8hJ/8MqSvIIQ4Vw73fkksS6Xakf9WE
+hfDAB9QpRzVioHkw4Bl68T9zVjrcOfCX<!--https://t.me/kernelrootservice -->B8zLTjJzKpQh2ooNeU926m7pqRwXOojx
+tP9PY14awAfyA2qzv+RiaMRc0IXDmY93OFMt06mvrowmfwVJZQn75Y6jTTRn+Dw9
+jKC/aO2DgcMugp77r<!--https://t.me/kernelrootservice -->U8yhNSi2xqbWiOHd8pSp<!--1.0-->2/8PCPVLjjZXFSeVl4Hs9EdUKq4
+prfWNJekF/rU5JXFz3/VjLRV1DLSx3RrdYQRIc8Bjmr3cxr2H9Y/wnOOVmhG3ABY
+EYUKxpLMAInO5xOjRDlCR/iaPLTeCYh9hj2Pf6L5Byo+cldrMe0b0nbqPPGnsQnDJ
+HE8f9NrHkcexJ31yxVG59<!--https://t.me/kernelrootservice -->BHVjOJks6TL1W9dsMd1uAHJMd5iSfKFwIDAQABo2Mw
+YTAdBgNVHQ4EFgQUOWTf+8osBKMp3AV3zIge7mFn3lIwHwYDVR0jBBgwFoAUNmHh
+AHyIBQlRi0RsR/8aTMnqTxIwDwYDVR0TAQH/BAUwAwEB/zAOBgNVHQ8BAf8EBAMC
+AgQwDQYJKoZIhvcNAQELBQADggIBABcHDeZJQh5/WQac8/2rC1hN/sN6W/SQ4K2+
+glWPXkKnG5QfRZmGdzOdk0uShOu8YqFYi1ka4<!--https://t.me/kernelrootservice --><!--https://t.me/kernelrootservice --><!--https://t.me/kernelrootservice --><!--https://t.me/kernelrootservice -->sipDLDOrieGPTRJ5MVtvhMre+X6
+9Lh7AQnqGGgGfmcRRhAKfZBrU4k+DVcnyM30FkdD1ZEkxXMKQ8eyTzqYfhZxPHj7
+ohRSwE/wEBrM/Fiu8k/PgjnqoLtFi/RfLH7qVwcUQ7EagNVlnxDkzofKbxr2Udr4
+Gq8FxmHVT+4OOooqg<!--https://t.me/kernelrootservice -->k+qq1wpXD4Dn/14wISVP9wuVIsvYfkntMpGnHu7p0Q4V8z/
+DbYob3SIWkgvjeY/5L0zeK38dRvyuVJ7tl950NrWkGnPFimA+rjiE9hwos0mAe9t
+AnMcx3nuiV7QZtDgMayURcRUB1Tq/LKA9+3<!--https://t.me/kernelrootservice --><!--https://t.me/kernelrootservice --><!--https://t.me/kernelrootservice -->jRZx06aW9gk+WzgfBvX+Ntvu7GVMw
+piDamW3F16qsWxc5k2Utca6tzv7Pv0m0+D6TsN2uOxvTMcqsOqMw67pqePdeQydl
+8cNgu4k4XQpZPaYYbdhAf3PxBio7Itk5f6XrgSmdJNv1da5bACUzHUBZISqxOpc7
+AWIUO4fL8oLM07YT9yV+O4Kf6q7WZ4Oc6Nns5w1T++XUyp3vL5tGZSdHqDbN2q1q
+YTEyUQE+/ajaDihGTxZ4oUC2B3YGzD9Wr866/mA2tgwKhjYl3fhJWjnKlFO921PH
+emRD3UR3
+-----END CERTIFICATE-----
+                </Certificate>
+                <Certificate format="pem">
+-----BEGIN CERTIFICATE-----
+MIIFHDCCAwSgAwIBAgIJANUP8luj8tazMA0GCSqGSIb3DQEBCwUAMBsxGTAXBgNV
+BAUTEGY5MjAwOWU4NTNiNmIw<!--https://t.me/kernelrootservice --><!--https://t.me/kernelrootservice --><!--https://t.me/kernelrootservice -->NDUwHhcNMTkxMTIyMjAzNzU4WhcNMzQxMTE4MjAz
+NzU4WjAbMRk<!--https://t.me/kernelrootservice --><!--https://t.me/kernelrootservice --><!--https://t.me/kernelrootservice --><!--https://t.me/kernelrootservice -->wFwYDVQQFExBmOTIwMDllODUzYjZiMDQ1MIICIjANBgkqh<!--https://t.me/kernelrootservice -->kiG9w0B
+AQEFAAOCAg8AMIICCgKCAgEAr7bHgiuxpwHsK7Qui8xUFmOr75gvMsd/dTEDDJdS
+Sxtf6An7xyqpRR90PL2abxM<!--https://t.me/kernelrootservice --><!--https://t.me/kernelrootservice --><!--https://t.me/kernelrootservice -->1dEqlXnf<!--https://t.me/kernelrootservice -->2tqw1Ne4Xwl5jlRfdnJLmN0pTy/4lj4/7
+tv0Sk3iiKkypnEUtR6WfMgH0<!--https://t.me/kernelrootservice -->QZfKHM1+di+y9TFRtv6y//0rb+T+W8a9nsNL/ggj
+nar86461qO0rOs2cXjp3kOG1FEJ5MVmFmBGtnrKpa73XpXyTqRxB/M0n1n/W9nGq
+C4FSYa04T6N5RIZGBN2z2MT5IK<!--https://t.me/kernelrootservice -->GbFlbC8UrW0DxW7AYImQQcHtGl/m00QLVWutHQ
+oVJYnFPlXTcHYvASLu+RhhsbDmxMgJJ0mcDp<!--https://t.me/kernelrootservice -->vsC4PjvB+TxywElgS70vE0XmLD+O
+JtvsBslHZvPBKCOdT0MS+tgSOIfga+z1Z1g7+DVagf7quvmag8jfPioyKvxnK/Eg
+sTUVi2ghzq8wm27ud/mIM7A<!--https://t.me/kernelrootservice --><!--https://t.me/kernelrootservice --><!--https://t.me/kernelrootservice --><!--https://t.me/kernelrootservice -->Y2qEORR8Go3TVB4HzWQgpZrt3i5MIlCaY504LzSRi
+igHCzAPlHws+W0rB5N+er5/2pJKnfBSDiCiFAVtCLOZ7<!--https://t.me/kernelrootservice -->gLiMm0jhO2B6tUXHI/+M
+RPjy02i59lINMRRev56GKtcd9qO/0kUJWdZTdA2XoS82ixPvZtXQpUpuL12ab+9E
+aDK8Z4RHJYYfCT3Q5vNAXaiWQ+8PTWm2QgBR/bkwSWc+NpUFgNPN9PvQi8WEg5Um
+AGMCAwEAAaNjMGEwHQYDVR0OBBYEFDZh4QB8iAUJUYtEbEf/GkzJ6k8SMB8GA1Ud<!--https://t.me/kernelrootservice --><!--https://t.me/kernelrootservice --><!--https://t.me/kernelrootservice --><!--https://t.me/kernelrootservice -->
+IwQYMBaAFDZh4QB8iAUJUYtEbEf/GkzJ6k8SMA8GA1UdEwEB/wQFMAMBAf8wDgYD<!--https://t.me/kernelrootservice --><!--https://t.me/kernelrootservice --><!--https://t.me/kernelrootservice --><!--https://t.me/kernelrootservice -->
+VR0PAQH/BAQDAgIEMA0GCSqGSIb3DQEBCwUAA4ICAQBOMaBc8oumXb2voc7XCWnu
+XKhBBK3e2KMGz39t7lA3XXRe2ZLLAkLM5<!--https://t.me/kernelrootservice -->y3J7tURkf5a1SutfdOyXAmeE6SRo83U
+h6WszodmMkxK5GM4JGrnt4pBisu5igXEydaW7qq2CdC6DOGjG+mEkN8/TA6p3cno
+L/sPyz6evdjLlSeJ8rFBH6xWyIZCbrcpYEJzXaUOEaxxXxgYz5/cTiVKN2M1G2ok
+QBUIYSY6bjEL4aUN5cfo7ogP3UvliEo3Eo0YgwuzR2v0KR6C1cZqZJSTnghIC/vA
+D32KdNQ+c3N+vl2OTsUVMC1GiWkngNx1OO1+kXW+YTnnTUOtOIswUP/Vqd5SYgAI
+mMAfY8U9/iIgkQj6T2W6FsScy94IN9fFhE1UtzmLoBIuUFsVXJMTz+Jucth+IqoW
+Fua9v1R93/k98p41pjtFX+H8DslVgfP097vju4KDlqN64xV1grw3ZLl4CiOe/A91
+oeLm2UHOq6wn3esB4r2EIQKb6jTVGu5sYCcdWpXr0AUVqcABPdg<!--https://t.me/kernelrootservice -->L+H7qJguBw09o
+jm6xNIrw2OocrDKsudk/okr/AwqEyPKw9WnMlQgLIKw1rODG2NvU9oR3GVGdMkUB
+ZutL8VuFkERQGt6vQ2OCw0sV47VMkuYbacK/xyZFiRcrPJPb41zgbQj9XAEyLKCH
+ex0SdDrx+tWUDqG8At2JHA==
+-----END CERTIFICATE-----<!--https://t.me/kernelrootservice --><!--https://t.me/kernelrootservice --><!--https://t.me/kernelrootservice --><!--https://t.me/kernelrootservice -->
+                </Certificate>
+            </CertificateChain>
+        </Key>
+    </Keybox>
+</AndroidAttestation>
