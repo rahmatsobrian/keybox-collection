@@ -1,0 +1,1184 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Siroha Keybox Collection</title>
+  <meta name="title" content="Siroha Keybox Collection">
+  <meta name="description" content="Gudang penyimpanan Keybox XML & ZIP terbaru. Selalu update dan siap digunakan untuk kebutuhan Anda yang disediakan oleh Siroha.">
+  <meta name="keywords" content="Siroha, Keybox, XML Keybox, Play Integrity Fix, PIF, Android Modding, Root, Magisk, KernelSU">
+  <meta name="author" content="Rahmat Sobrian (Siroha)">
+  
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://shiroyukey.vercel.app/">
+  <meta property="og:title" content="Siroha Keybox Collection">
+  <meta property="og:description" content="Gudang penyimpanan Keybox XML & ZIP terbaru. Selalu update dan siap digunakan oleh pengguna.">
+  <meta property="og:image" content="https://shiroyukey.vercel.app/banner.png">
+  <meta property="og:image:width" content="1280">
+  <meta property="og:image:height" content="720">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <style>
+    /* DESIGN TOKENS (KernelSU System from design.md) */
+    :root {
+      --primary: #5672CD;
+      --secondary: #EBEBEF;
+      --tertiary: #E5E7EB;
+      --neutral: #FFFFFF;
+      --surface: #FFFFFF;
+      --on-surface: #3C3C43;
+      --muted: #6B7280;
+      --border: #E5E7EB;
+      --accent: #5672CD;
+      --error: #D92D20;
+      --warning: #FF9500;
+      --telegram: #2AABEE;
+      
+      --r-none: 0px;
+      --r-sm: 4px;
+      --r-md: 8px;
+      --r-lg: 12px;
+      --r-xl: 20px;
+      --r-full: 9999px;
+      
+      --sp-xs: 12px;
+      --sp-sm: 20px;
+      --sp-md: 32px;
+      --sp-lg: 64px;
+      --sp-xl: 144px;
+      
+      --nav: 56px;
+      --st: env(safe-area-inset-top, 0px);
+      --sb: env(safe-area-inset-bottom, 0px);
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+    
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background-color: #FAFAFA;
+      color: var(--on-surface);
+      min-height: 100dvh;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      position: relative;
+    }
+    
+    body.modal-open {
+      overflow: hidden;
+    }
+    
+    /* NAV */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 200;
+      padding-top: var(--st);
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+    }
+    
+    .nav-inner {
+      height: var(--nav);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 16px;
+    }
+    
+    .logo {
+      font-weight: 800;
+      font-size: 15px;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      user-select: none;
+    }
+    
+    .nav-actions {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+    
+    .nav-btn {
+      background: var(--secondary);
+      border: none;
+      color: var(--on-surface);
+      padding: 0 14px;
+      height: 36px;
+      border-radius: var(--r-full);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 13px;
+      transition: background-color 0.15s;
+    }
+    
+    .nav-btn:hover {
+      background: #dedede;
+    }
+    
+    /* CONTENT PAGE */
+    .page {
+      padding-top: calc(var(--st) + var(--nav) + 16px);
+      padding-bottom: calc(var(--sb) + 32px);
+      background: #FAFAFA;
+      width: 100%;
+      min-height: 100dvh;
+    }
+    
+    .pc {
+      animation: slideUp 0.25s ease-out both;
+      max-width: 680px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: none; }
+    }
+    
+    /* HERO */
+    .hero {
+      padding: 16px 16px 24px;
+      text-align: center;
+    }
+    
+    .hico {
+      width: 64px;
+      height: 64px;
+      background: var(--primary);
+      border-radius: var(--r-xl);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+      color: white;
+    }
+    
+    .htit {
+      font-size: 32px;
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: var(--on-surface);
+    }
+    
+    .hsub {
+      font-size: 14px;
+      line-height: 20px;
+      color: var(--muted);
+      margin-top: 8px;
+    }
+    
+    /* GRID CONTAINER */
+    .container {
+      padding: 0 16px 32px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      align-items: stretch;
+    }
+    
+    @media(min-width: 500px) {
+      .container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    /* SECTION TITLES */
+    .section-title {
+      grid-column: 1 / -1;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      border-bottom: 1px dashed var(--border);
+      padding-bottom: 8px;
+      margin: 16px 0 4px;
+    }
+    
+    .section-title.old {
+      color: var(--muted);
+      border-bottom-color: var(--tertiary);
+    }
+    
+    /* CARD UI */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r-md);
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      position: relative;
+      transition: border-color 0.15s;
+    }
+    
+    .card:hover {
+      border-color: var(--primary);
+    }
+    
+    .card-content {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      flex: 1;
+      margin-bottom: 14px;
+    }
+    
+    .icon-box {
+      background: rgba(86, 114, 205, 0.08);
+      color: var(--primary);
+      padding: 10px;
+      border-radius: var(--r-md);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .icon-box.zip-type {
+      background: rgba(255, 149, 0, 0.08);
+      color: var(--warning);
+    }
+    
+    .card-info {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    
+    .card-info h3 {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--on-surface);
+      line-height: 1.4;
+      word-break: break-word;
+    }
+    
+    .card-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      font-size: 11px;
+      color: var(--muted);
+    }
+    
+    .meta-item {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    
+    /* CARD ACTIONS & BADGES */
+    .card-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: auto;
+    }
+    
+    .password-badge {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 8px 12px;
+      background: rgba(255, 149, 0, 0.08);
+      border-radius: var(--r-full);
+      font-size: 11px;
+      color: #D97706;
+      font-weight: 600;
+      text-align: center;
+      line-height: 1.4;
+    }
+    
+    .btn-row {
+      display: flex;
+      gap: 8px;
+    }
+    
+    .btn-action {
+      width: 100%;
+      height: 44px;
+      padding: 0 20px;
+      border: none;
+      border-radius: var(--r-full);
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: background-color 0.15s, transform 0.1s;
+      text-decoration: none;
+      font-family: 'Inter', sans-serif;
+    }
+    
+    .btn-action:active {
+      transform: scale(0.98);
+    }
+    
+    .btn-row .btn-action {
+      flex: 1;
+      width: auto;
+    }
+    
+    .btn-primary {
+      background: var(--primary);
+      color: var(--neutral);
+    }
+    
+    .btn-primary:hover {
+      background-color: #435eb4;
+    }
+    
+    .btn-zip {
+      background: var(--primary);
+      color: var(--neutral);
+    }
+    
+    .btn-zip:hover {
+      background-color: #435eb4;
+    }
+    
+    .btn-telegram {
+      background: var(--secondary);
+      color: var(--on-surface);
+    }
+    
+    .btn-telegram:hover {
+      background-color: #dedede;
+    }
+    
+    /* STATUS, LOADERS & ERRORS */
+    .status-container {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 40px 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .spinner {
+      width: 28px;
+      height: 28px;
+      border: 3px solid var(--secondary);
+      border-top-color: var(--primary);
+      border-radius: var(--r-full);
+      animation: spin 0.6s linear infinite;
+      margin-bottom: 12px;
+    }
+    
+    @keyframes spin { to { transform: rotate(360deg); } }
+    
+    .error-box {
+      background: #FEF3F2;
+      border: 1px solid #FDA29B;
+      border-radius: var(--r-md);
+      padding: 24px;
+      max-width: 400px;
+      width: 100%;
+      margin: 16px auto;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .error-box h2 {
+      color: var(--error);
+      font-size: 16px;
+      font-weight: 700;
+    }
+    
+    .error-box p {
+      color: #B42318;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+    
+    .timer-box {
+      background: rgba(217, 45, 32, 0.05);
+      border: 1px dashed rgba(217, 45, 32, 0.2);
+      padding: 12px;
+      border-radius: var(--r-md);
+      width: 100%;
+      margin: 8px 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+    
+    .timer-display {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--error);
+      letter-spacing: 2px;
+    }
+    
+    .timer-info {
+      font-size: 11px;
+      color: #B42318;
+      font-weight: 500;
+    }
+    
+    /* MODALS & DRAWER SYSTEM */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100dvh;
+      background: rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      z-index: 1000;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease-out;
+    }
+    
+    .modal-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    
+    .modal-content {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-left: 1px solid var(--border);
+      border-right: 1px solid var(--border);
+      border-radius: 16px 16px 0 0;
+      width: 100%;
+      max-width: 680px;
+      margin: 0 auto;
+      transform: translateY(100%);
+      transition: transform 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      padding: 0 0 calc(var(--sb) + 16px);
+      display: flex;
+      flex-direction: column;
+      max-height: 85dvh;
+    }
+    
+    .modal-overlay.active .modal-content {
+      transform: translateY(0);
+    }
+    
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    
+    .modal-header h3 {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--on-surface);
+      margin: 0;
+    }
+    
+    .modal-close {
+      background: transparent;
+      border: none;
+      color: var(--muted);
+      cursor: pointer;
+      padding: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: color 0.15s;
+    }
+    
+    .modal-close:hover {
+      color: var(--error);
+    }
+    
+    .modal-body {
+      overflow-y: auto;
+      padding: 16px;
+      overscroll-behavior: contain;
+      font-size: 13px;
+      line-height: 1.5;
+      color: var(--on-surface);
+    }
+    
+    .modal-body::-webkit-scrollbar {
+      width: 4px;
+    }
+    .modal-body::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .modal-body::-webkit-scrollbar-thumb {
+      background: var(--tertiary);
+      border-radius: var(--r-full);
+    }
+    
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+    
+    .form-group input {
+      background: var(--surface);
+      color: var(--on-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r-md);
+      padding: 12px 16px;
+      font-family: monospace;
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.15s;
+      width: 100%;
+    }
+    
+    .form-group input:focus {
+      border-color: var(--primary);
+    }
+    
+    .modal-actions {
+      display: flex;
+      gap: 12px;
+      padding: 0 16px;
+      flex-shrink: 0;
+    }
+    
+    .btn-outline {
+      background: var(--secondary);
+      border: none;
+      color: var(--error);
+      height: 40px;
+      border-radius: var(--r-full);
+      flex: 1;
+      cursor: pointer;
+      transition: background-color 0.15s;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .btn-outline:hover {
+      background-color: #fde8e8;
+    }
+    
+    .btn-submit {
+      background: var(--primary);
+      border: none;
+      color: var(--neutral);
+      height: 40px;
+      border-radius: var(--r-full);
+      flex: 2;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      transition: background-color 0.15s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .btn-submit:hover {
+      background-color: #435eb4;
+    }
+    
+    .source-link-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: var(--r-md);
+      background: #F9FAFB;
+      border: 1px solid var(--border);
+      color: var(--on-surface);
+      text-decoration: none;
+      font-size: 13px;
+      transition: border-color 0.15s, color 0.15s;
+      margin-bottom: 8px;
+    }
+    
+    .source-link-item:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+    
+    .source-link-item span {
+      flex: 1;
+    }
+    
+    /* TOAST */
+    .toast {
+      position: fixed;
+      bottom: calc(var(--sb) + 26px);
+      left: 50%;
+      transform: translateX(-50%) translateY(14px);
+      background: #1F2937;
+      color: #FFFFFF;
+      padding: 10px 18px;
+      border-radius: var(--r-md);
+      font-size: 13px;
+      font-weight: 500;
+      opacity: 0;
+      transition: opacity .22s, transform .22s;
+      pointer-events: none;
+      z-index: 999;
+      white-space: nowrap;
+    }
+    
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+    
+    /* FOOTER */
+    footer {
+      padding: 24px 16px;
+      text-align: center;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 12px;
+    }
+    
+    /* PHONE OPTIMIZATIONS */
+    @media (max-width: 480px) {
+      .hide-mobile { display: none; }
+      .nav-inner { padding: 0 12px; }
+      .logo { font-size: 14px; gap: 4px; }
+      .nav-btn { padding: 0 10px; font-size: 12px; height: 32px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" id="navBar">
+    <div class="nav-inner">
+      <div class="logo">
+        <i data-lucide="shield-check" style="width: 18px; height: 18px; color: var(--primary);"></i> Siroha
+      </div>
+      <div class="nav-actions">
+        <button class="nav-btn" onclick="toggleAboutModal()">
+          <i data-lucide="info" style="width: 14px; height: 14px;"></i> <span class="hide-mobile">Tentang</span>
+        </button>
+        <button class="nav-btn" onclick="toggleTokenModal()">
+          <i data-lucide="key" style="width: 14px; height: 14px;"></i> <span id="token-status">Limit Standar</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- CONTENT PAGE -->
+  <main class="page">
+    <div class="pc">
+      <header class="hero">
+        <div class="hico">
+          <i data-lucide="shield-check" style="width: 32px; height: 32px;"></i>
+        </div>
+        <h2 class="htit">Keybox Collection</h2>
+        <p class="hsub">Gudang penyimpanan file XML & ZIP Keybox terbaru dari Siroha.</p>
+      </header>
+      
+      <!-- GRID CONTAINER -->
+      <section class="container" id="keybox-grid"></section>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    &copy; 2026 Rahmat Sobrian | #Nasgor aliases Siroha.
+  </footer>
+
+  <!-- ABOUT MODAL -->
+  <div class="modal-overlay" id="about-overlay" onclick="toggleAboutModal()">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <h3 style="display: flex; align-items: center; gap: 8px; color: var(--primary);">
+          <i data-lucide="info" style="width: 16px; height: 16px;"></i> Tentang Website Ini
+        </h3>
+        <button class="modal-close" onclick="toggleAboutModal()"><i data-lucide="x" style="width: 18px; height: 18px;"></i></button>
+      </div>
+      
+      <div class="modal-body">
+        <p style="margin-bottom: 12px;">
+          Website ini adalah tempat koleksi keybox yang didapatkan dari berbagai grup/channel di Telegram. Perlu diketahui bahwa file keybox yang tersedia di sini adalah milik pembuat aslinya.
+        </p>
+        
+        <p style="margin-bottom: 8px; font-weight: 700; color: var(--on-surface);">🔗 Sumber & Pembuat:</p>
+        <div style="margin-bottom: 16px;">
+          <a href="https://t.me/+xAZq3eIDNjI3MzI1" target="_blank" class="source-link-item">
+            <i data-lucide="external-link" style="width: 14px; height: 14px; color: var(--primary)"></i> 
+            <span><b>Don't buy!.xml</b> by Azmunaa</span>
+          </a>
+          
+          <a href="https://t.me/yuriiroot" target="_blank" class="source-link-item">
+            <i data-lucide="external-link" style="width: 14px; height: 14px; color: var(--primary)"></i> 
+            <span><b>Yurikey.zip</b> by Yuri</span>
+          </a>
+          
+          <a href="https://t.me/keyboxstrong" target="_blank" class="source-link-item">
+            <i data-lucide="external-link" style="width: 14px; height: 14px; color: var(--primary)"></i> 
+            <span><b>Evokerrkey.xml</b> by Evokerr</span>
+          </a>
+          
+          <a href="https://t.me/aleisterprjkst" target="_blank" class="source-link-item">
+            <i data-lucide="external-link" style="width: 14px; height: 14px; color: var(--primary)"></i> 
+            <span><b>Keybox.xml</b> by Aleister Prjkst</span>
+          </a>
+          
+          <div style="font-size: 11px; color: var(--muted); padding-left: 6px; margin-top: 4px;">
+            ...dan sumber-sumber lainnya, serta terima kasih banyak kepada para pembuat keybox yang ada.
+          </div>
+        </div>
+
+        <div style="background: rgba(86, 114, 205, 0.05); border-left: 3px solid var(--primary); padding: 12px; border-radius: var(--r-sm); font-size: 12.5px; color: var(--on-surface); line-height: 1.5;">
+          <b>Misi:</b> Mengumpulkan file Keybox yang ada agar mudah diunduh <b>tanpa aplikasi Telegram.</b> Namun, kami menyarankan Anda untuk tetap bergabung ke grup/channel Telegram pembuat keybox aslinya!
+        </div>
+      </div>
+
+      <div class="modal-actions" style="margin-top: 4px;">
+        <button class="btn-submit" onclick="toggleAboutModal()" style="width: 100%;">Tutup</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOKEN MODAL -->
+  <div class="modal-overlay" id="token-overlay" onclick="toggleTokenModal()">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <h3 style="display: flex; align-items: center; gap: 6px; color: var(--primary);">
+          <i data-lucide="settings" style="width: 16px; height: 16px;"></i> API Settings
+        </h3>
+        <button class="modal-close" onclick="toggleTokenModal()"><i data-lucide="x" style="width: 18px; height: 18px;"></i></button>
+      </div>
+      
+      <div class="modal-body">
+        <p style="margin-bottom: 12px;">
+          Gunakan <b>Personal Access Token (PAT)</b> GitHub untuk menaikkan batas limit dari 60 menjadi 5000 request/jam.
+        </p>
+        <a href="https://github.com/settings/tokens/new" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 4px;">
+          Buat Token baru di GitHub <i data-lucide="external-link" style="width: 12px; height: 12px;"></i>
+        </a>
+        
+        <div class="form-group" style="margin-top: 16px; margin-bottom: 4px;">
+          <label for="github-pat">Personal Access Token</label>
+          <input type="text" id="github-pat" placeholder="ghp_xxxxxxxxxxxxxxxxxxxxxx" autocomplete="off" spellcheck="false">
+        </div>
+      </div>
+
+      <div class="modal-actions">
+        <button class="btn-outline" onclick="removeToken()">Hapus</button>
+        <button class="btn-submit" onclick="saveToken()">Simpan</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST -->
+  <div class="toast" id="toast"></div>
+
+  <script>
+    const USER = 'rahmatsobrian';
+    const REPO = 'keybox-collection';
+    const API_CONTENTS_URL = `https://api.github.com/repos/${USER}/${REPO}/contents/`;
+    const TELEGRAM_CHANNEL = 'yuriiroot'; 
+
+    let storedToken = localStorage.getItem('siroha_github_token') || '';
+    let countdownInterval;
+    const CACHE_KEY = 'siroha_date_cache';
+    let dateCache = JSON.parse(localStorage.getItem(CACHE_KEY)) || {};
+
+    // Custom force downloads using Blobs
+    document.addEventListener('click', async function(e) {
+      const btn = e.target.closest('.btn-force-dl');
+      if (!btn) return;
+
+      e.preventDefault();
+      
+      const url = btn.getAttribute('data-url');
+      const filename = btn.getAttribute('data-filename');
+      const originalHTML = btn.innerHTML;
+      
+      try {
+        btn.innerHTML = `<i data-lucide="loader" class="spinner" style="width: 12px; height: 12px; border-width: 2px; margin-bottom: 0;"></i> Memproses...`;
+        btn.style.pointerEvents = 'none';
+        btn.style.opacity = '0.7';
+        lucide.createIcons();
+
+        const response = await fetch(url);
+        if (!response.ok) throw new Error('Gagal mengakses data file.');
+        
+        const blob = await response.blob();
+        const blobUrl = window.URL.createObjectURL(blob);
+        
+        const a = document.createElement('a');
+        a.style.display = 'none';
+        a.href = blobUrl;
+        a.download = filename;
+        
+        document.body.appendChild(a);
+        a.click();
+        
+        window.URL.revokeObjectURL(blobUrl);
+        document.body.removeChild(a);
+        showToast('Unduhan berhasil dimulai!');
+        
+      } catch (error) {
+        console.error('Download gagal:', error);
+        window.open(url, '_blank');
+      } finally {
+        btn.innerHTML = originalHTML;
+        btn.style.pointerEvents = 'auto';
+        btn.style.opacity = '1';
+        lucide.createIcons();
+      }
+    });
+
+    function updateTokenStatusUI() {
+      const statusSpan = document.getElementById('token-status');
+      const patInput = document.getElementById('github-pat');
+      if (storedToken) {
+        statusSpan.innerHTML = 'Token Aktif';
+        statusSpan.style.color = 'var(--primary)'; // Blue active status color
+        patInput.value = storedToken;
+      } else {
+        statusSpan.innerHTML = 'Limit Standar';
+        statusSpan.style.color = 'inherit';
+        patInput.value = '';
+      }
+    }
+    updateTokenStatusUI();
+
+    function checkModalsScroll() {
+      const isAnyModalActive = document.querySelector('.modal-overlay.active');
+      if (isAnyModalActive) {
+        document.body.classList.add('modal-open');
+      } else {
+        document.body.classList.remove('modal-open');
+      }
+    }
+
+    function toggleTokenModal() { 
+      document.getElementById('token-overlay').classList.toggle('active'); 
+      checkModalsScroll();
+    }
+    
+    function toggleAboutModal() { 
+      document.getElementById('about-overlay').classList.toggle('active'); 
+      checkModalsScroll();
+    }
+
+    function saveToken() {
+      const inputVal = document.getElementById('github-pat').value.trim();
+      if (inputVal && !inputVal.startsWith('ghp_') && !inputVal.startsWith('github_pat_')) {
+        showToast('Format token tidak valid');
+        return;
+      }
+      if (inputVal) {
+        localStorage.setItem('siroha_github_token', inputVal); storedToken = inputVal;
+        clearInterval(countdownInterval); 
+        toggleTokenModal(); 
+        updateTokenStatusUI(); 
+        fetchKeyboxes();
+        showToast('Token berhasil disimpan!');
+      } else {
+        removeToken();
+      }
+    }
+
+    function removeToken() {
+      localStorage.removeItem('siroha_github_token'); storedToken = '';
+      toggleTokenModal(); updateTokenStatusUI(); fetchKeyboxes();
+      showToast('Token telah dihapus.');
+    }
+
+    async function fetchWithAuth(url) {
+      const headers = {};
+      if (storedToken) headers['Authorization'] = `token ${storedToken}`;
+      
+      const response = await fetch(url, { headers });
+      
+      if (response.status === 403 || response.status === 429) {
+        const resetTimeHeader = response.headers.get('x-ratelimit-reset');
+        const error = new Error('RATE_LIMIT');
+        error.resetTime = resetTimeHeader ? parseInt(resetTimeHeader) * 1000 : (new Date().getTime() + 3600000);
+        throw error;
+      }
+      if (!response.ok) throw new Error('FETCH_ERROR');
+      return response.json();
+    }
+
+    async function getFileDetails(path, fileSha) {
+      if (dateCache[fileSha]) return new Date(dateCache[fileSha]);
+
+      try {
+        const data = await fetchWithAuth(`https://api.github.com/repos/${USER}/${REPO}/commits?path=${path}&per_page=1`);
+        if (data && data.length > 0) {
+          const commitDate = new Date(data[0].commit.committer.date);
+          dateCache[fileSha] = commitDate.getTime();
+          localStorage.setItem(CACHE_KEY, JSON.stringify(dateCache));
+          return commitDate;
+        }
+        return new Date(0);
+      } catch (error) {
+        if (error.message === 'RATE_LIMIT') throw error; 
+        return new Date(0);
+      }
+    }
+
+    function startTimer(resetMs) {
+      clearInterval(countdownInterval);
+      const display = document.getElementById('timer-display');
+      if (!display) return;
+      
+      countdownInterval = setInterval(() => {
+        const now = new Date().getTime();
+        const distance = resetMs - now;
+        
+        if (distance < 0) {
+          clearInterval(countdownInterval); display.innerHTML = "00:00"; display.style.color = "var(--primary)";
+          setTimeout(() => fetchKeyboxes(), 2000); return;
+        }
+        
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        display.innerHTML = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+      }, 1000);
+    }
+
+    async function fetchKeyboxes() {
+      const grid = document.getElementById('keybox-grid');
+      grid.innerHTML = `
+        <div class="status-container" style="color: var(--primary);">
+          <div class="spinner"></div>
+          <p style="font-size:0.9rem">Sinkronisasi data...</p>
+        </div>`;
+      
+      try {
+        const data = await fetchWithAuth(API_CONTENTS_URL);
+        const validFiles = data.filter(file => file.name.endsWith('.xml') || file.name.endsWith('.zip'));
+
+        if (validFiles.length === 0) {
+          grid.innerHTML = '<div class="status-container"><p>Tidak ada file ditemukan.</p></div>';
+          return;
+        }
+
+        const filesWithDates = await Promise.all(validFiles.map(async (file) => {
+          const lastUpdated = await getFileDetails(file.path, file.sha);
+          return { ...file, lastUpdated };
+        }));
+
+        filesWithDates.sort((a, b) => b.lastUpdated - a.lastUpdated);
+        grid.innerHTML = '';
+
+        const newestTime = filesWithDates[0].lastUpdated.getTime(); 
+        const THREE_DAYS_MS = 3 * 24 * 60 * 60 * 1000; 
+        const thresholdTime = newestTime - THREE_DAYS_MS; 
+
+        const newKeyboxes = [];
+        const oldKeyboxes = [];
+
+        filesWithDates.forEach(file => {
+          if (file.lastUpdated.getTime() >= thresholdTime && file.lastUpdated.getTime() !== 0) {
+            newKeyboxes.push(file);
+          } else {
+            oldKeyboxes.push(file);
+          }
+        });
+
+        function createCardElement(file, index) {
+          const isZip = file.name.endsWith('.zip');
+          const card = document.createElement('div');
+          card.className = 'card';
+          
+          let animDelay = Math.min(index * 0.05, 0.5);
+          card.style.animation = `slideUp 0.4s ease forwards ${animDelay}s`;
+          card.style.opacity = '0';
+
+          const cleanName = file.name.replace(/\.(xml|zip)$/i, '');
+          const sizeKB = (file.size / 1024).toFixed(2);
+          
+          let formattedDateTime = "Unknown";
+          if (file.lastUpdated.getTime() !== 0) {
+            formattedDateTime = file.lastUpdated.toLocaleString('id-ID', { 
+              weekday: 'long', 
+              day: 'numeric', 
+              month: 'short', 
+              year: 'numeric', 
+              hour: '2-digit', 
+              minute: '2-digit' 
+            }).replace(/\./g, ':').replace('pukul ', '');
+          }
+
+          const iconType = isZip ? 'file-archive' : 'file-code';
+          const iconBoxClass = isZip ? 'icon-box zip-type' : 'icon-box';
+          const telegramSearchUrl = `https://t.me/${TELEGRAM_CHANNEL}?q=${encodeURIComponent(cleanName)}`;
+
+          const safeUrl = file.download_url.replace(/"/g, '&quot;');
+          const safeName = file.name.replace(/"/g, '&quot;');
+
+          let actionsHTML = isZip ? `
+            <div class="password-badge">
+              <i data-lucide="lock" style="width: 13px; height: 13px; flex-shrink: 0;"></i>
+              File terproteksi sandi. Ekstrak sebelum digunakan.
+            </div>
+            <div class="btn-row">
+              <a href="${telegramSearchUrl}" target="_blank" class="btn-action btn-telegram"><i data-lucide="send" style="width: 16px; height: 16px;"></i> Sandi</a>
+              <button type="button" class="btn-action btn-zip btn-force-dl" data-url="${safeUrl}" data-filename="${safeName}">
+                <i data-lucide="download" style="width: 16px; height: 16px;"></i> Unduh
+              </button>
+            </div>
+          ` : `
+            <button type="button" class="btn-action btn-primary btn-force-dl" data-url="${safeUrl}" data-filename="${safeName}">
+              <i data-lucide="download" style="width: 16px; height: 16px;"></i> Unduh
+            </button>
+          `;
+
+          card.innerHTML = `
+            <div class="card-content">
+              <div class="${iconBoxClass}"><i data-lucide="${iconType}" style="width: 18px; height: 18px;"></i></div>
+              <div class="card-info">
+                <h3>${cleanName}</h3>
+                <div class="card-meta">
+                  <div class="meta-item"><i data-lucide="database" style="width: 10px; height: 10px;"></i> ${sizeKB} KB</div>
+                  <div class="meta-item"><i data-lucide="clock" style="width: 10px; height: 10px;"></i> ${formattedDateTime}</div>
+                </div>
+              </div>
+            </div>
+            <div class="card-actions">${actionsHTML}</div>
+          `;
+          return card;
+        }
+
+        if (newKeyboxes.length > 0) {
+          const titleBaru = document.createElement('div');
+          titleBaru.className = 'section-title';
+          titleBaru.innerHTML = '<i data-lucide="sparkles" style="width: 13px; height: 13px; color: var(--primary);"></i> Update Baru';
+          grid.appendChild(titleBaru);
+
+          newKeyboxes.forEach((file, index) => {
+            grid.appendChild(createCardElement(file, index));
+          });
+        }
+
+        if (oldKeyboxes.length > 0) {
+          const titleLama = document.createElement('div');
+          titleLama.className = 'section-title old';
+          titleLama.innerHTML = '<i data-lucide="history" style="width: 13px; height: 13px; color: var(--muted);"></i> Arsip Lama';
+          grid.appendChild(titleLama);
+
+          oldKeyboxes.forEach((file, index) => {
+            grid.appendChild(createCardElement(file, index + newKeyboxes.length));
+          });
+        }
+
+        lucide.createIcons();
+
+      } catch (error) {
+        if (error.message === 'RATE_LIMIT') {
+          let timerHTML = '';
+          let shouldStartTimer = false;
+          
+          if (error.resetTime) {
+            const resetDate = new Date(error.resetTime);
+            const timeStr = resetDate.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' });
+            timerHTML = `
+              <div class="timer-box">
+                <div class="timer-info">Mereset otomatis pada <b>${timeStr} WIB</b></div>
+                <div class="timer-display" id="timer-display">--:--</div>
+              </div>
+            `;
+            shouldStartTimer = true;
+          }
+
+          grid.innerHTML = `
+            <div class="status-container">
+              <div class="error-box">
+                <i data-lucide="alert-triangle" style="width: 32px; height: 32px; color: var(--error); margin-bottom: 4px;"></i>
+                <h2>Batas Limit Tercapai!</h2>
+                <p>GitHub API limit habis untuk alamat IP Anda. Silakan pasang GitHub Token Anda.</p>
+                ${timerHTML}
+                <button onclick="toggleTokenModal()" class="btn-action btn-primary" style="margin-top: 8px; width: 100%;">
+                  <i data-lucide="key" style="width: 16px; height: 16px;"></i> Pasang Token
+                </button>
+              </div>
+            </div>
+          `;
+
+          if (shouldStartTimer) {
+            startTimer(error.resetTime);
+          }
+        } else {
+          grid.innerHTML = `
+            <div class="status-container">
+              <i data-lucide="wifi-off" style="width: 32px; height: 32px; color: var(--error); margin-bottom: 8px;"></i>
+              <p style="color: var(--error); font-size: 13px; font-weight: 500;">Terjadi kesalahan koneksi atau sinkronisasi data.</p>
+            </div>`;
+        }
+        lucide.createIcons();
+      }
+    }
+
+    // -- Toast --
+    let toastTimer;
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => {
+        t.classList.remove('show');
+      }, 2500);
+    }
+
+    lucide.createIcons();
+    fetchKeyboxes();
+  </script>
+</body>
+</html>
